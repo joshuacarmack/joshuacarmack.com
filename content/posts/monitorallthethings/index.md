@@ -10,7 +10,7 @@ tags: ["monitoring","network","server","graphs","alerts"]
 
 One of the main projects I like to work on with my homelab and now into some production usage is monitoring. Once I started self-hosting some applications and websites, I knew I wanted to make sure they were always available and working, thus began my journey into the world of monitoring systems. 
 
-It seems like a boring topic, checking if something is working or not, but to me it's kind of a game of how much data can I pull and monitor? I've been monitoring everthing from website uptime, to network utilization, to battery and power status, and even to copier toner monitoring. Why? Because the data is out there and available.
+It seems like a boring topic, checking if something is working or not, but to me it's kind of a game of how much data can I pull and monitor? I've been monitoring everything from website uptime, to network utilization, to battery and power status, and even to copier toner monitoring. Why? Because the data is out there and available.
 
 ## How it began: Uptime Kuma
 
@@ -26,7 +26,7 @@ Below is an alert from where a WAN connection monitor went down and sent an aler
 
 Uptime Kuma can also do other monitors such as checking a website for a specific word or phrase to make sure it is there, or checking specific ports. 
 
-One way I use this is for checking a radio system for the radio club I am a part of. We use a system called Echolink that bascially puts a radio that is hosted at my house on the internet for other radio operators to use to communicate on our repeater. The Echolink system has a webpage that lists all of the active connections on it, so I am able to do a keyword monitor in Uptime Kuma that checks that page and looks for our node number. If the number is not found in the list, our node has been disconnected and it will alert me. 
+One way I use this is for checking a radio system for the radio club I am a part of. We use a system called Echolink that basically puts a radio that is hosted at my house on the internet for other radio operators to use to communicate on our repeater. The Echolink system has a webpage that lists all of the active connections on it, so I am able to do a keyword monitor in Uptime Kuma that checks that page and looks for our node number. If the number is not found in the list, our node has been disconnected and it will alert me. 
 
 ![Uptime Kuma Radio Keywork Monitor](echolink-node-ping.png)
 
@@ -65,7 +65,7 @@ graph TD
 {{< /mermaid >}}
 </div>
 
-This setup allows some flexbility and also security. With a proxy at each location, the devices at that location send their data to the proxy which then sends it encrypted to the main server for processing, storage, and alerting. This also allows each proxy to be able to do active checks on devices such as printers, network switches, and batteries that can't run a Zabbix agent to report data. 
+This setup allows some flexibility and also security. With a proxy at each location, the devices at that location send their data to the proxy which then sends it encrypted to the main server for processing, storage, and alerting. This also allows each proxy to be able to do active checks on devices such as printers, network switches, and batteries that can't run a Zabbix agent to report data. 
 
 For church, all of our computers have Zabbix agents on them that report tons of data from them to the Zabbix system. This can be things like uptime, if they are rebooting often, or drive, processor, or memory utilization. This allows me to keep an eye on all of our production systems to make sure that everything is running at full capacity. 
 
