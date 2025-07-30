@@ -2,7 +2,7 @@
 title: "Fixing the Bays Mountain Meshtastic Node"
 date: 2025-01-22
 draft: false
-summary: ""
+summary: "Fixing a Meshtastic node from our radio tower on Bays Mountain"
 tags: ["radio","meshtastic","hardware"]
 ---
 
