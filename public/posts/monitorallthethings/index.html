@@ -1,0 +1,872 @@
+<!doctype html>
+<html
+  lang="en"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="dark"
+  data-auto-appearance="false"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+  
+    <meta http-equiv="content-language" content="en">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color">
+
+  
+  <title>Monitor All the Things! &middot; Joshua Carmack</title>
+    <meta name="title" content="Monitor All the Things! &middot; Joshua Carmack">
+
+  
+  <meta name="description" content="I really like monitoring...">
+  <meta name="keywords" content="monitoring,network,server,graphs,alerts,">
+  
+  
+  <link rel="canonical" href="http://localhost:1313/posts/monitorallthethings/">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.804597aaaec84ba6cb5294b4a25689e4aaf6b02e5ae6d6b1c994b85990757d58fb1014fa1e3bb06da5ebf098cf46c765002e0f272e6905d7f726bb70ae57c424.css"
+    integrity="sha512-gEWXqq7IS6bLUpS0olaJ5Kr2sC5a5taxyZS4WZB1fVj7EBT6HjuwbaXr8JjPRsdlAC4PJy5pBdf3JrtwrlfEJA==">
+
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.516a16745bea5a9bd011138d254cc0fd3973cd55ce6e15f3dec763e7c7c2c7448f8fe7b54cca811cb821b0c7e12cd161caace1dd794ac3d34d40937cbcc9ee12.js"
+    integrity="sha512-UWoWdFvqWpvQERONJUzA/TlzzVXObhXz3sdj58fCx0SPj&#43;e1TMqBHLghsMfhLNFhyqzh3XlKw9NNQJN8vMnuEg=="></script>
+  
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.f0b0fcfd9abc7e72d88ab9d3bfd5985e4faa1e8e990fd1bf46e97c39e1e400951ef8d386382a4c2c528272b589a81f52854bedcb5f9c78e5d2cdc3d88f1577b7.js"
+      integrity="sha512-8LD8/Zq8fnLYirnTv9WYXk&#43;qHo6ZD9G/Rul8OeHkAJUe&#43;NOGOCpMLFKCcrWJqB9ShUvty1&#43;ceOXSzcPYjxV3tw=="
+      data-copy="Copy"
+      data-copied="Copied"></script>
+  
+  
+    
+    <script src="/lib/zoom/zoom.min.umd.b4b722fcb5d42f34f52b30a92f3521b69f403ca9d96d0d6179eb537cb870f5d83fdf1fe836688d95d5c99fefbda4170487711006e56051fa67ea00da10521721.js" integrity="sha512-tLci/LXULzT1KzCpLzUhtp9APKnZbQ1heetTfLhw9dg/3x/oNmiNldXJn&#43;&#43;9pBcEh3EQBuVgUfpn6gDaEFIXIQ=="></script>
+  
+
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+  <meta property="og:url" content="http://localhost:1313/posts/monitorallthethings/">
+  <meta property="og:site_name" content="Joshua Carmack">
+  <meta property="og:title" content="Monitor All the Things!">
+  <meta property="og:description" content="I really like monitoring…">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-21T00:00:00+00:00">
+    <meta property="article:tag" content="Monitoring">
+    <meta property="article:tag" content="Network">
+    <meta property="article:tag" content="Server">
+    <meta property="article:tag" content="Graphs">
+    <meta property="article:tag" content="Alerts">
+    <meta property="og:image" content="http://localhost:1313/posts/monitorallthethings/featured.jpg">
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/posts/monitorallthethings/featured.jpg">
+  <meta name="twitter:title" content="Monitor All the Things!">
+  <meta name="twitter:description" content="I really like monitoring…">
+<meta name="twitter:image" content="http://localhost:1313/posts/monitorallthethings/featured.jpg">
+    <meta property="og:image" content="http://localhost:1313/posts/monitorallthethings/featured.jpg">
+  <script type="application/ld+json">
+  [{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "Posts",
+    "name": "Monitor All the Things!",
+    "headline": "Monitor All the Things!",
+    
+    "abstract": "I really like monitoring\u0026hellip;",
+    "inLanguage": "en",
+    "url" : "http:\/\/localhost:1313\/posts\/monitorallthethings\/",
+    "author" : {
+      "@type": "Person",
+      "name": "Joshua Carmack"
+    },
+    "copyrightYear": "2025",
+    "dateCreated": "2025-04-21T00:00:00\u002b00:00",
+    "datePublished": "2025-04-21T00:00:00\u002b00:00",
+    
+    "dateModified": "2025-04-21T00:00:00\u002b00:00",
+    
+    "keywords": ["monitoring","network","server","graphs","alerts"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "896"
+  }]
+  </script>
+
+
+
+  
+  
+    <meta name="author" content="Joshua Carmack">
+  
+  
+    
+      
+        
+      
+    
+      
+        
+          <link href="https://facebook.com/joshua.carmack" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://github.com/joshuacarmack" rel="me">
+        
+      
+    
+      
+        
+          <link href="https://instagram.com/joshuacarmack" rel="me">
+        
+      
+    
+  
+
+  
+  
+
+<script src="/lib/jquery/jquery.slim.min.03cb160e3cfdb2667a2e2c80d283bebcf63ff8bbc4b629c9ab2babf6fae1d0c07ad470edae783efa4fabda2ac01c58d60e63b98b3c336be8208460f08f4354f5.js" integrity="sha512-A8sWDjz9smZ6LiyA0oO&#43;vPY/&#43;LvEtinJqyur9vrh0MB61HDtrng&#43;&#43;k&#43;r2irAHFjWDmO5izwza&#43;gghGDwj0NU9Q=="></script>
+
+
+
+  
+  
+  
+  
+  <script
+    defer
+    type="text/javascript"
+    src="/js/mermaid.bundle.adc6512ea1d62944db976c764d8b2ec6608bb8c19c3c1d3107ef49ac30152d78817f08813143045f3cfdd25acd91ea49fae8845abd4db341fdcf2c004b4bc190.js"
+    integrity="sha512-rcZRLqHWKUTbl2x2TYsuxmCLuMGcPB0xB&#43;9JrDAVLXiBfwiBMUMEXzz90lrNkepJ&#43;uiEWr1Ns0H9zywAS0vBkA=="></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</head>
+<body
+    class="flex flex-col h-screen px-6 m-auto text-lg leading-7 max-w-7xl bg-neutral text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32 scrollbar-thin scrollbar-track-neutral-200 scrollbar-thumb-neutral-400 dark:scrollbar-track-neutral-800 dark:scrollbar-thumb-neutral-600">
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="px-3 py-1 text-sm -translate-y-8 rounded-b-lg bg-primary-200 focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="font-bold text-primary-600 ltr:pr-2 rtl:pl-2 dark:text-primary-400">&darr;</span>Skip to main content</a
+      >
+    </div>
+    
+    
+      <div class="min-h-[148px]"></div>
+<div class="fixed inset-x-0 pl-[24px] pr-[24px] z-100">
+  <div
+    id="menu-blur"
+    class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom bg-neutral dark:bg-neutral-800"></div>
+  <div class="relative max-w-[64rem] ml-auto mr-auto">
+    
+
+
+
+
+
+
+
+
+
+
+
+<div
+  class="main-menu flex items-center justify-between px-4 py-6 sm:px-6 md:justify-start gap-x-3 pt-[2px] pr-0 pb-[3px] pl-0">
+  
+  
+
+  <div class="flex flex-1 items-center justify-between">
+    <nav class="flex space-x-3">
+      
+        <a href="/" class="text-base font-medium text-gray-500 hover:text-gray-900">
+          Joshua Carmack
+        </a>
+      
+    </nav>
+    
+  <nav class="hidden md:flex items-center gap-x-5 md:ml-12 h-12">
+    
+
+    
+
+
+    
+      <button
+        id="search-button"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+      </button>
+    
+
+    
+  </nav>
+
+    
+  <div class="flex md:hidden items-center gap-x-5 md:ml-12 h-12">
+    <span></span>
+
+    
+
+    
+      <button
+        id="search-button-mobile"
+        aria-label="Search"
+        class="text-base hover:text-primary-600 dark:hover:text-primary-400"
+        title="Search (/)">
+        
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+      </button>
+    
+
+    
+  </div>
+
+  </div>
+  
+  <div class="-my-2 md:hidden">
+    <div id="menu-button" class="block">
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<script
+  type="text/javascript"
+  src="/js/background-blur.min.78ad5090e7c0c2533bac9dd23bdb1f723f834e5c3626627bd31017cc139ce0651b529877862129cee49e380ab2fdcd8baef28ae3e086bc54957fdaa7758775b2.js"
+  integrity="sha512-eK1QkOfAwlM7rJ3SO9sfcj&#43;DTlw2JmJ70xAXzBOc4GUbUph3hiEpzuSeOAqy/c2LrvKK4&#43;CGvFSVf9qndYd1sg=="
+  data-target-id="menu-blur"></script>
+
+    
+    <div class="relative flex flex-col grow">
+      <main id="main-content" class="grow">
+        
+  
+
+
+  <article>
+    
+      
+      
+      
+      
+        
+    
+      <div
+        class="w-full h-36 md:h-56 lg:h-72 single_hero_basic nozoom"
+        style="background-image:url(/posts/monitorallthethings/featured_hu_5822fd30008578ca.jpg);"></div>
+    
+  
+      
+    
+
+
+    <header id="single_header" class="mt-5 max-w-prose">
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        Monitor All the Things!
+      </h1>
+      <div class="mt-1 mb-6 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
+        
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+  
+
+  
+  
+    
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2025-04-21T00:00:00&#43;00:00">21 April 2025</time>
+    
+
+    
+    
+  </div>
+
+  
+
+  
+  
+
+  
+  
+
+
+
+      </div>
+
+      
+      
+      
+      
+      
+
+      
+
+      
+
+        
+
+        
+
+        
+
+      
+
+    </header>
+
+    <section class="flex flex-col max-w-full mt-0 prose dark:prose-invert lg:flex-row">
+      
+
+
+      <div class="min-w-0 min-h-0 max-w-fit">
+        
+
+
+
+        <div class="article-content max-w-prose mb-20">
+          
+<h2 class="relative group">My Monitoring Systems Overview 
+    <div id="my-monitoring-systems-overview" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#my-monitoring-systems-overview" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>One of the main projects I like to work on with my homelab and now into some production usage is monitoring. Once I started self-hosting some applications and websites, I knew I wanted to make sure they were always available and working, thus began my journey into the world of monitoring systems.</p>
+<p>It seems like a boring topic, checking if something is working or not, but to me it&rsquo;s kind of a game of how much data can I pull and monitor? I&rsquo;ve been monitoring everthing from website uptime, to network utilization, to battery and power status, and even to copier toner monitoring. Why? Because the data is out there and available.</p>
+
+<h2 class="relative group">How it began: Uptime Kuma 
+    <div id="how-it-began-uptime-kuma" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#how-it-began-uptime-kuma" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>The very first monitoring system I set up is a project called Uptime Kuma. (<a
+  href="https://github.com/louislam/uptime-kuma%29"
+    target="_blank"
+  >https://github.com/louislam/uptime-kuma)</a>. This is a very simple web app that mainly does ping based monitoring. This means it just checks if a site or IP address is up or down and reports on it.</p>
+<p>This can be used to check if a location&rsquo;s internet is up or down, or making sure a website is accessible. Below is a monitor that is pinging my church&rsquo;s WAN IP every minute to alert when it goes down.</p>
+<p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Uptime Kuma Ping"
+    srcset="
+      /posts/monitorallthethings/rbc-wan-ping_hu_7e77d6349e4223c3.png  330w,
+      /posts/monitorallthethings/rbc-wan-ping_hu_576a3854d83886eb.png  660w,
+      /posts/monitorallthethings/rbc-wan-ping_hu_551d4d07e7add0d1.png 1280w
+    "
+    data-zoom-src="/posts/monitorallthethings/rbc-wan-ping.png"
+    src="/posts/monitorallthethings/rbc-wan-ping.png">
+
+  
+</figure>
+</p>
+<p>Below is an alert from where a WAN connection monitor went down and sent an alert to my phone.</p>
+<p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Uptime Kuma Alert"
+    srcset="
+      /posts/monitorallthethings/down-alert_hu_b69b380a14732bc.png  330w,
+      /posts/monitorallthethings/down-alert_hu_7c4162c8eed8faa0.png  660w,
+      /posts/monitorallthethings/down-alert_hu_9faa457db5a25b30.png 1280w
+    "
+    data-zoom-src="/posts/monitorallthethings/down-alert.png"
+    src="/posts/monitorallthethings/down-alert.png">
+
+  
+</figure>
+</p>
+<p>Uptime Kuma can also do other monitors such as checking a website for a specific word or phrase to make sure it is there, or checking specific ports.</p>
+<p>One way I use this is for checking a radio system for the radio club I am a part of. We use a system called Echolink that bascially puts a radio that is hosted at my house on the internet for other radio operators to use to communicate on our repeater. The Echolink system has a webpage that lists all of the active connections on it, so I am able to do a keyword monitor in Uptime Kuma that checks that page and looks for our node number. If the number is not found in the list, our node has been disconnected and it will alert me.</p>
+<p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Uptime Kuma Radio Keywork MOnitor"
+    srcset="
+      /posts/monitorallthethings/echolink-node-ping_hu_dc57950a994d5b5c.png  330w,
+      /posts/monitorallthethings/echolink-node-ping_hu_703342ad08c998d7.png  660w,
+      /posts/monitorallthethings/echolink-node-ping_hu_e189c35140690309.png 1280w
+    "
+    data-zoom-src="/posts/monitorallthethings/echolink-node-ping.png"
+    src="/posts/monitorallthethings/echolink-node-ping.png">
+
+  
+</figure>
+</p>
+
+<h2 class="relative group">Onto Zabbix 
+    <div id="onto-zabbix" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#onto-zabbix" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>After using Uptime Kuma for a while, I decided it was time to expand my monitoring capabilities. I tried out a few different suites but decided on Zabbix. Zabbix is a free monitoring tool, but is super powerful and expandable.</p>
+<p>The main thing that drew me to Zabbix is the way that it can be set up as a distributed monitoring system. I have a main Zabbix Server that is hosted on a cloud VPS in Linode&rsquo;s Atlanta data center. I then have a Zabbix Proxy at my house and at church. These are small virtual machines that do all of the monitoring inside of the network and report back to the main server. See the diagram below.</p>
+<div style="background-color:white; padding: 20px">
+<div class="mermaid" align="center">
+  <pre>
+graph TD
+    %% Top layer
+    ZabbixServer[Zabbix Server - Cloud]
+
+    %% Middle layer - Proxies
+    HomeProxy[Zabbix Proxy - Home]
+    ChurchProxy[Zabbix Proxy - Church]
+
+    ZabbixServer --> HomeProxy
+    ZabbixServer --> ChurchProxy
+
+    %% Home network
+    subgraph "🏠 Home Network"
+        HomeProxy --> HomePC1[PC 1]
+        HomeProxy --> HomePC2[PC 2]
+        HomeProxy --> HomeSwitch[Network Switch]
+    end
+
+    %% Church network
+    subgraph "⛪ Church Network"
+        ChurchProxy --> ChurchPC1[PC 1]
+        ChurchProxy --> ChurchPC2[PC 2]
+        ChurchProxy --> ChurchRouter[Router]
+    end
+</pre>
+</div>
+
+</div>
+<p>This setup allows some flexbility and also security. With a proxy at each location, the devices at that location send their data to the proxy which then sends it encrypted to the main server for processing, storage, and alerting. This also allows each proxy to be able to do active checks on devices such as printers, network switches, and batteries that can&rsquo;t run a Zabbix agent to report data.</p>
+<p>For church, all of our computers have Zabbix agents on them that report tons of data from them to the Zabbix system. This can be things like uptime, if they are rebooting often, or drive, processor, or memory utilization. This allows me to keep an eye on all of our production systems to make sure that everything is running at full capacity.</p>
+<p>Zabbix itself has some nice reporting. On the homepage it will show me any alerts that exist across any systems. Below it is showing an informative alert about an access point at church that has high utilization. It also shows 2 warning alerts, one for disk space on a media computer and the other for the toner cartridge in my printer being low.</p>
+<p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Zabbix Problems"
+    srcset="
+      /posts/monitorallthethings/zabbix-problems_hu_af1046f27648c680.png  330w,
+      /posts/monitorallthethings/zabbix-problems_hu_82eea543115a134b.png  660w,
+      /posts/monitorallthethings/zabbix-problems_hu_667235e0fbe94aac.png 1280w
+    "
+    data-zoom-src="/posts/monitorallthethings/zabbix-problems.png"
+    src="/posts/monitorallthethings/zabbix-problems.png">
+
+  
+</figure>
+</p>
+<p>It can also do diagrams, which can show networks and any issues that exist at any point in the map. Below is an overview map of Ridgeview&rsquo;s network. This shows me all of the switches, access points, cameras, and major systems. This provides a quick overview of how everything is wired together and helps troubleshooting issues quicker. You can see the MEDIA2 PC is alerting for the disk space issue.</p>
+<p>
+
+
+
+
+
+
+<figure>
+      <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    fetchpriority="low"
+    alt="Zabbix Network Diagram"
+    srcset="
+      /posts/monitorallthethings/zabbix-church-map_hu_2039cb9f002cf731.png  330w,
+      /posts/monitorallthethings/zabbix-church-map_hu_6fa9a760a9d843ca.png  660w,
+      /posts/monitorallthethings/zabbix-church-map_hu_762630b22cda8668.png 1280w
+    "
+    data-zoom-src="/posts/monitorallthethings/zabbix-church-map.png"
+    src="/posts/monitorallthethings/zabbix-church-map.png">
+
+  
+</figure>
+</p>
+
+<h2 class="relative group">Little bit of Grafana 
+    <div id="little-bit-of-grafana" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#little-bit-of-grafana" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+<p>Zabbix can give good insights into alerts, but it doesn&rsquo;t present data too nicely and that is where Grafana comes into play.</p>
+<p>Grafana is made to take in multiple sources of data and make pretty graphs and diagrams out of it. There are several data sources that I use for Grafana including pulling data right from Zabbix, querying MySQL databases, and even websites and other data feeds.</p>
+
+<h2 class="relative group">Tactical RMM 
+    <div id="tactical-rmm" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#tactical-rmm" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+<h2 class="relative group">Wazuh 
+    <div id="wazuh" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#wazuh" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+<h2 class="relative group">Injesting info 
+    <div id="injesting-info" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 ltr:-left-6 rtl:-right-6 not-prose group-hover:opacity-100">
+        <a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700 !no-underline" href="#injesting-info" aria-label="Anchor">#</a>
+    </span>        
+    
+</h2>
+
+          
+          
+          
+        </div>
+
+        
+
+        
+
+        
+
+        
+
+      </div>
+
+      
+      
+        
+        
+          
+          
+        
+        
+        
+        <script
+          type="text/javascript"
+          src="/js/page.min.54b6f4371722649edbe871e431d8670d670878c22be8f36e229fe53cc9b786fe25a834def5e6de621f7a3e37b72bc8cd73839aa5ed907ed6cbd45cd3e1b0fa20.js"
+          integrity="sha512-VLb0NxciZJ7b6HHkMdhnDWcIeMIr6PNuIp/lPMm3hv4lqDTe9ebeYh96Pje3K8jNc4Oape2QftbL1FzT4bD6IA=="
+          data-oid="views_posts\monitorallthethings\index.md"
+          data-oid-likes="likes_posts\monitorallthethings\index.md"></script>
+      
+
+    </section>
+    <footer class="pt-8 max-w-prose print:hidden">
+      
+  
+
+
+      
+    </footer>
+  </article>
+
+        <div id="top-scroller" class="pointer-events-none absolute top-[110vh] bottom-0 w-12 ltr:right-0 rtl:left-0">
+  <a
+    href="#the-top"
+    class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 mb-16 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+    aria-label="Scroll to top"
+    title="Scroll to top">
+    &uarr;
+  </a>
+</div>
+
+      </main><footer id="site-footer" class="py-10 print:hidden">
+  
+  
+    
+  
+  <div class="flex items-center justify-between">
+    
+    
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          &copy;
+          2025
+          Joshua Carmack
+      </p>
+    
+
+    
+    
+      <p class="text-xs text-neutral-500 dark:text-neutral-400">
+        
+        
+        Powered by <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a> &amp; <a class="hover:underline hover:decoration-primary-400 hover:text-primary-500"
+          href="https://blowfish.page/" target="_blank" rel="noopener noreferrer">Blowfish</a>
+      </p>
+    
+
+  </div>
+  <script>
+    
+    mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
+      margin: 24,
+      background: 'rgba(0,0,0,0.5)',
+      scrollOffset: 0,
+    })
+    
+  </script> 
+  
+  <script
+    type="text/javascript"
+    src="/js/process.min.ee03488f19c93c2efb199e2e3014ea5f3cb2ce7d45154adb3399a158cac27ca52831db249ede5bb602700ef87eb02434139de0858af1818ab0fb4182472204a4.js"
+    integrity="sha512-7gNIjxnJPC77GZ4uMBTqXzyyzn1FFUrbM5mhWMrCfKUoMdsknt5btgJwDvh&#43;sCQ0E53ghYrxgYqw&#43;0GCRyIEpA=="></script>
+  
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
+  data-url="http://localhost:1313/">
+  <div
+    id="search-modal"
+    class="flex flex-col w-full max-w-3xl min-h-0 mx-auto border rounded-md shadow-lg top-20 border-neutral-200 bg-neutral dark:border-neutral-700 dark:bg-neutral-800">
+    <header class="relative z-10 flex items-center justify-between flex-none px-2">
+      <form class="flex items-center flex-auto min-w-0">
+        <div class="flex items-center justify-center w-8 h-8 text-neutral-400">
+          
+
+  <span class="relative block icon">
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+
+  </span>
+
+
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="flex flex-auto h-12 mx-1 bg-transparent appearance-none focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="Search"
+          tabindex="0">
+      </form>
+      <button
+        id="close-search-button"
+        class="flex items-center justify-center w-8 h-8 text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="Close (Esc)">
+        
+
+  <span class="relative block icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+
+  </span>
+
+
+      </button>
+    </header>
+    <section class="flex-auto px-2 overflow-auto">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+  
+</html>
