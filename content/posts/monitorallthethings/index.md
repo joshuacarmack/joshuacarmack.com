@@ -16,11 +16,13 @@ It seems like a boring topic, checking if something is working or not, but to me
 
 The very first monitoring system I set up is a project called Uptime Kuma. (https://github.com/louislam/uptime-kuma). This is a simple web app primarily designed for ping-based monitoring. Its primary function is to perform basic checks to determine if something is up or down.
 
-This monitoring system can be utilized to check if a location’s internet connection is up or to ensure that a website is accessible. Below is an example of a monitor that pings my church’s WAN IP every minute to alert me when it goes down. 
+This monitoring system can be utilized to check if a location’s internet connection is up or to ensure that a website is accessible. Below is an example of a monitor that pings my church’s WAN IP every minute to alert me when it goes down. It also provides a graph of the response time, and a history of the status.
 
 ![Uptime Kuma Ping](rbc-wan-ping.png)
 
 Below is an alert from where a WAN connection monitor went down and sent an alert to my phone. 
+
+Uptime Kuma can do alerts to a lot of different locations like email, Discord, or different push notification services. I use Pushover for these as it's a simple one-time payment service. 
 
 ![Uptime Kuma Alert](down-alert.png)
 
@@ -30,9 +32,11 @@ For instance, I use Uptime Kuma to monitor a radio system for my radio club. We 
 
 ![Uptime Kuma Radio Keywork Monitor](echolink-node-ping.png)
 
-## Onto Zabbix
+## Migration to Zabbix
 
-After using Uptime Kuma for a while, I realized I needed to expand my monitoring capabilities. While Uptime Kuma is a great program, it has some limitations. I tried out a few other monitoring suites, but I ended up choosing Zabbix. Zabbix is a free monitoring tool that is incredibly powerful and expandable. 
+After using Uptime Kuma for a while, I realized I needed to expand my monitoring capabilities. While Uptime Kuma is a great program, it has some limitations. The main thing I wanted was a way to monitor things inside of my network and church's network while still having the main monitoring cloud based for more reliable monitoring.
+
+I tried out a few other monitoring suites, but I ended up choosing Zabbix. Zabbix is a free monitoring tool that is incredibly powerful and expandable. 
 
 Zabbix’s ability to be configured as a distributed monitoring system was the primary draw for me. I have a primary Zabbix Server hosted on a cloud VPS in Linode’s Atlanta data center. Additionally, I have Zabbix Proxies set up at my home and church. These are small virtual machines that perform all the monitoring within the network and then report back to the main server. See the diagram below for a visual representation.
 
@@ -78,19 +82,13 @@ Zabbix can also create diagrams that visualize networks and identify any issues 
 ![Zabbix Network Diagram](zabbix-church-map.png)
 
 
-## Little bit of Grafana
+## Displaying Data With Grafana
 
 Zabbix can give good insights into alerts, but it doesn't present data too nicely and that is where Grafana comes into play.
 
 Grafana is made to take in multiple sources of data and make pretty graphs and diagrams out of it. There are several data sources that I use for Grafana including pulling data right from Zabbix, querying MySQL databases, and even websites and other data feeds.
 
+In the screenshot below, I'm taking in these data points from Zabbix and making charts and graphs out of them. This is my "Sunday Dashboard" which gives me statistics on the utilization on our media computers and also some network graphs. I can also see how many people are connected to each wireless access point throughout our campus.
 
+![Grafana Dashboard](<Screenshot 2025-08-01 132315.png>)
 
-## Tactical RMM
-
-
-## Wazuh
-
-
-
-## Injesting info
