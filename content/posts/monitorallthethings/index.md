@@ -30,7 +30,7 @@ Uptime Kuma can also do other monitors such as checking a website for a specific
 
 For instance, I use Uptime Kuma to monitor a radio system for my radio club. We employ a system called Echolink, which essentially hosts a radio at my house on the internet, enabling other radio operators to communicate on our repeater. The Echolink system has a webpage that lists all active connections. I can set up a keyword monitor in Uptime Kuma that checks this page and looks for our node number. If the number is absent from the list, it indicates that our node has been disconnected, and I receive an alert. 
 
-![Uptime Kuma Radio Keywork Monitor](echolink-node-ping.png)
+![Uptime Kuma Radio Keyword Monitor](echolink-node-ping.png)
 
 ## Migration to Zabbix
 
