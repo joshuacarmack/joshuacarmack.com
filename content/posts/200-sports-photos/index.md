@@ -1,5 +1,5 @@
 ---
-title: "Taking 200 player photos and keeping track of them all..."
+title: "Taking 200 Soccer Player Photos"
 date: 2025-08-22
 draft: false
 summary: "Every year I help take player photos for our church's soccer league."
