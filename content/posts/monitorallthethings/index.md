@@ -82,6 +82,33 @@ Zabbix can also create diagrams that visualize networks and identify any issues 
 ![Zabbix Network Diagram](zabbix-church-map.png)
 
 
+## What I'm monitoring in Zabbix
+
+### Homelab
+
+For my homelab I have Zabbix monitoring my Proxmox cluster. Zabbix can do auto-discovery of new virtual machines and containers and give basic alerts from them without me having to do anything. So if I spin up a new container to try an application Zabbix will see that container and can do monitoring of its uptime, memory usage, storage usage, and a few other things. 
+
+In the example below, this is an alert showing that a virtual machine is running. There is not a Zabbix agent running on this VM and this alert is coming from my proxmox cluster monitoring. 
+
+![Zabbix alert showing a virtual machine is not running](zabbix-vm-alert.png)
+
+### Infrastructure
+
+I also use [patricegautier/unifiZabbix](https://github.com/patricegautier/unifiZabbix) to connect to my Unifi controller and pull data from it. This is used on my home and church proxies to connect to all the switches and access points. 
+
+Below is all of the data points that it pulls from my home Unifi Access Point. It includes some helpful things like uptime, the total TX/RX, and speeds.
+
+![Unifi AP data](zabbix-unifiap-data.png)
+
+With all of that data we need to do something with it. Thankfully the template comes with triggers built in. For access points, the image below shows the triggers that have been applied to the AP. I can get alerts on things like if the AP is rebooting, has high CPU or memory usage, or even has upgrades available. 
+
+![Unifi AP triggers](zabbix-unifiap-triggers.png)
+
+### Computers
+
+
+### Work Clients
+
 ## Displaying Data With Grafana
 
 Zabbix can give good insights into alerts, but it doesn't present data too nicely and that is where Grafana comes into play.
