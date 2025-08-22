@@ -24,7 +24,7 @@ As the season begins I get a player roster from the coordinator and I build a sp
 
 ![Spreadsheet of player IDs](playerid-sheet.png)
 
-The Team ID is a 2 digit ID just starting at 1 and each team has an ID. The player ID is just an incremented unique ID for each kid plus a few spare cards in case there were late additions.
+The Team ID is a 2 digit ID just starting at 1 and each team has an ID. The player ID is just an incremented unique ID for each kid plus a few spare cards in case there were late additions. There is also a row for just the team name that I use for the team photo
 
 The data shown here is some made up names but you get the idea. 
 
@@ -42,3 +42,15 @@ This worked really well for us. Prior to the shoots I printed all of these out a
 
 I printed these out on [Dymo compatible non-adhesive business cards](https://www.amazon.com/dp/B0BKG8C9KS?ref=ppx_yo2ov_dt_b_fed_asin_title) and I was super happy with how well this worked.
 
+# The Shoots
+
+## Lighting Setup
+
+
+## Computer/Camera Setup
+
+
+## The Process
+
+
+# Editing
