@@ -6,7 +6,7 @@ summary: "Every year I help take player photos for our church's soccer league."
 tags: ["photography","automation","photos","photoshop","camera"]
 ---
 
-# Intro
+## Intro
 
 Every year my church has a Upward Soccer league with almost 200 players ranging from 3 years old through high schoolers. I volunteer to take the player and team photos. Being able to quickly take photos and tag them with the player information is crucial as we have to get through all of them in just a few hours. 
 
@@ -16,9 +16,9 @@ Once the photos are taken I use a lot of computer automation to process the phot
 
 In this post I'm going to give all the details on how we accomplished this photo session.
 
-# Set Up
+## Set Up
 
-## Player IDs
+### Player IDs
 
 As the season begins I get a player roster from the coordinator and I build a spreadsheet of these teams and players. I have a column for the team name, the player first and last name, and then some IDs.
 
@@ -30,7 +30,7 @@ The data shown here is some made up names but you get the idea.
 
 I then have a column concatenate these IDs and give me a 5 digit ID for each player. The reason I do this is for sorting later. I can easily sort each player into a folder based on their team number. When I publish the gallery I like to have albums for each team so the parents can find the photos easier.
 
-## ID Cards
+### ID Cards
 
 This year was the first year we used ID cards to be passed between the helpers and myself. Last year they had the spreadsheet I made and would give me the 5 digit ID to be manually entered into my software. This works but it was time consuming and confusing to make sure we had the numbers correct. 
 
@@ -42,15 +42,15 @@ This worked really well for us. Prior to the shoots I printed all of these out a
 
 I printed these out on [Dymo compatible non-adhesive business cards](https://www.amazon.com/dp/B0BKG8C9KS?ref=ppx_yo2ov_dt_b_fed_asin_title) and I was super happy with how well this worked.
 
-# The Shoots
+## The Shoots
 
-## Lighting Setup
-
-
-## Computer/Camera Setup
+### Lighting Setup
 
 
-## The Process
+### Computer/Camera Setup
 
 
-# Editing
+### The Process
+
+
+## Editing
