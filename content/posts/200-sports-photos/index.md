@@ -46,6 +46,9 @@ I printed these out on [Dymo compatible non-adhesive business cards](https://www
 
 ### Lighting Setup
 
+![Diagram showing lighting setup](lightingsetup.jpeg)
+
+
 
 ### Computer/Camera Setup
 
