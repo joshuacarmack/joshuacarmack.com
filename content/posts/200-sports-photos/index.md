@@ -46,14 +46,30 @@ I printed these out on [Dymo compatible non-adhesive business cards](https://www
 
 ### Lighting Setup
 
+We shot all of the photos outdoors but in the shade. It was also in the evening and the sun was starting to set so I wanted a simple lighting setup that would make sure all of the photos were lit close to the same. I set up 2 Smallrig LED lights as my hair light and front fill and a Neewer flash off to the side of my camera.
+
 ![Diagram showing lighting setup](lightingsetup.jpeg)
 
-
+The constant LED lights and flash made sure that everything was exposed properly and gave enough separation between my subject and background.
 
 ### Computer/Camera Setup
 
+For the camera setup, I shot on a Sony A7IV with a Sony 24-70 f2.8 GM lens. This gave me a fantastic picture and let me zoom in closer on individual shots and still capture the full group.
+
+From the camera I shoot tethered to my laptop (Dell XPS) into Capture One. I've tried a few different pieces of tethered shooting software and went with Capture One this year as I'm using it for my editing already so this helps me skip a step of importing into Capture One. I probably won't do this next year and will probably go back to SmartShooter 5. The reason being Capture One doesn't show a live preview whereas SmartShooter does. This makes it a bit easier to frame the shot and make sure it's good before taking the picture, instead of using the screen on the camera.
+
+I am also using a cheap barcode scanner and an Elgato Stream Deck for a hotkey I'll explain later.
+
+I set up my camera on a tripod and have a laptop stand beside it for my laptop and use a Neewer Magic Arm clamp to attach my barcode scanner to the stand to make the scanning easier.
 
 ### The Process
 
+Our process for shooting these pictures is the kids can come line up whenever they arrive for practice so we can start taking individual shots quickly and be ready for team shots once everyone is here.
+
+The kids start off by checking in with my helpers as they find the player's card and hand it to me. I scan their card and it will set the filename in Capture One as the barcode which is their 5 digit ID. While I'm doing this they go stand at a spot we have marked and another person helps pose them. Whenever they are posed and ready I take 1-3 shots per player and make sure at least one looks good and they have their eyes open.
+
+Once this is good they will join their team again. At this point I press a button on my Stream Deck that runs an AutoHotKey script to click on the name field and erase it and be ready for me to scan the next card.
+
+This script is one of my pain points with this setup, there is no way for Capture One or SmartShooter to erase the current ID when I scan a new one, so this button makes it easier than trying to navigate and click where the name field is.
 
 ## Editing
