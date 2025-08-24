@@ -106,8 +106,11 @@ With all of that data we need to do something with it. Thankfully the template c
 
 ### Computers
 
+On computers that I directly support (my own, my wife's, and church computers) I have a Zabbix Agent installed on them. This takes data from the computers and sends it to the main Zabbix server through that site's proxy. Adding an agent gives me tons of data such as disk usage, network interface statistics and speed, services that are running or not running, memory usage, and uptime. On my desktop, Zabbix has 165 data points it gets. The default template has over 70 alerts that it can do such as disk space being too low or a disk being overloaded, if the network card link speed changes for some reason, if a service that is on Automatic mode is not running, or if a computer is rebooting not in a maintenance window that I have set for when they run updates.
 
 ### Work Clients
+
+For work clients on some that I care about, I have a simple ICMP Ping that runs every few minutes to their WAN IP. This can let me know if their connection is down and also gives me a history of when it does go down. This has helped a lot with troubleshooting their internet connections and seeing exactly when it happens.
 
 ## Displaying Data With Grafana
 
