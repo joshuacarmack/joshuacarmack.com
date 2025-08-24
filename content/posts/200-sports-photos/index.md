@@ -73,3 +73,11 @@ Once this is good they will join their team again. At this point I press a butto
 This script is one of my pain points with this setup, there is no way for Capture One or SmartShooter to erase the current ID when I scan a new one, so this button makes it easier than trying to navigate and click where the name field is.
 
 ## Editing
+
+The first thing I do for editing is copy the Capture One project to my storage server so it gets backed up. This satisfies my 3-2-1 backup policy. Copy 1 is my main project on my laptop. Copy 2 is the raw photos on the SD card in my camera. Copy 3 is on my NAS which gets backed up offsite to Backblaze at night. 
+
+Once the project is copied I run a Powershell script that takes my CSV export of all the players and their teams and IDs and compares it to the files in my project folder. The photos come out named with the 5 digit ID, a dash, and then a shutter count so every photo is unique but I can still sort them easily. The script ignores the second half of the filename and is only checking the ID. It will tell me the total IDs and how many we do not have pictures for.
+
+![alt text](reportingscript.png)
+
+This lets me give the UPWARD coordinator a quick report of kids we are missing and let them decide on a makeup day.
