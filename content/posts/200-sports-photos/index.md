@@ -52,6 +52,8 @@ We shot all of the photos outdoors but in the shade. It was also in the evening 
 
 The constant LED lights and flash made sure that everything was exposed properly and gave enough separation between my subject and background.
 
+![Setup Photo](IMG_2366.JPEG)
+
 ### Computer/Camera Setup
 
 For the camera setup, I shot on a Sony A7IV with a Sony 24-70 f2.8 GM lens. This gave me a fantastic picture and let me zoom in closer on individual shots and still capture the full group.
@@ -61,6 +63,8 @@ From the camera I shoot tethered to my laptop (Dell XPS) into Capture One. I've 
 I am also using a cheap barcode scanner and an Elgato Stream Deck for a hotkey I'll explain later.
 
 I set up my camera on a tripod and have a laptop stand beside it for my laptop and use a Neewer Magic Arm clamp to attach my barcode scanner to the stand to make the scanning easier.
+
+![Computer and camera setup](IMG_2363.JPEG)
 
 ### The Process
 
