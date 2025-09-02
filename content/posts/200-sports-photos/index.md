@@ -78,10 +78,18 @@ This script is one of my pain points with this setup, there is no way for Captur
 
 ## Editing
 
+### Importing the Photos
+
 The first thing I do for editing is copy the Capture One project to my storage server so it gets backed up. This satisfies my 3-2-1 backup policy. Copy 1 is my main project on my laptop. Copy 2 is the raw photos on the SD card in my camera. Copy 3 is on my NAS which gets backed up offsite to Backblaze at night. 
 
-Once the project is copied I run a Powershell script that takes my CSV export of all the players and their teams and IDs and compares it to the files in my project folder. The photos come out named with the 5 digit ID, a dash, and then a shutter count so every photo is unique but I can still sort them easily. The script ignores the second half of the filename and is only checking the ID. It will tell me the total IDs and how many we do not have pictures for.
+Once the project is copied I run a Powershell script (https://gist.github.com/joshuacarmack/5149d14791e1f0dc18d204e9cafed5b7) that takes my CSV export of all the players and their teams and IDs and compares it to the files in my project folder. The photos come out named with the 5 digit ID, a dash, and then a shutter count so every photo is unique but I can still sort them easily. The script ignores the second half of the filename and is only checking the ID. It will tell me the total IDs and how many we do not have pictures for.
 
 ![alt text](reportingscript.png)
 
 This lets me give the UPWARD coordinator a quick report of kids we are missing and let them decide on a makeup day.
+
+Once we have verified I have pictures of all of the kids it's time to edit.
+
+### Culling the photos
+
+For 2025 we had about 170 players. I ended up with over 650 photos to go through. I went through and chose the best shot for each plater and team, ending up with about 180 shots total. I ran my script again to verify every player had a photo after I had chosen the best shots.
