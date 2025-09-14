@@ -17,11 +17,15 @@ Every year my wife Meg and I go down to Grundy County, Tennessee with [Recovery 
 
 In the past, we have worked out of a small food truck trailer which worked but was cramped between me, the audio mixer, and lyrics operator. This year they built us a front of house platform which was so much better. There was room to walk around and not bump into each other.
 
+![Starting location of video control rack](IMG_2596.jpeg)
+
 ## Networking
 
 The main component of the whole setup is the network that I bring in. Almost everything in my streaming setup is network based so a properly setup network is key.
 
 The main internet connection is brought in by Ben Lomand Connect and they drop a fiber ONT and a wireless router under our stage. They provide a free WiFi for anyone attending but they let us plug into their router for a hard wired connection for our production equipment. 
+
+![Video rack being set up and getting our internet connection going](IMG_2598.jpeg)
 
 See below diagram of our network and I'll explain more in depth about how it's set up and why I did it this way.
 
@@ -47,6 +51,8 @@ flowchart LR
 ### Stage Switch
 
 The first part of the production network is the Stage Switch that is under the stage. Our ISP connects into this switch and rides a WAN VLAN back to Front of House (FOH). The main reason for this is so I only have to run one cable between the stage and Front of House, or where the rest of the equipment is. Also on this switch are a few cameras. All of the cameras that we run for the event are networked and PoE powered. This lets us keep cabling clean and have quick setup/teardown processes.
+
+![Location of our stage switch and ISP equipment](IMG_2625.jpeg)
 
 ### FOH Switch
 
@@ -76,6 +82,8 @@ From the Pro Tools PC it routes a single mono channel back to the mixer and out 
 ## Streaming PC
 
 The streaming PC is a Dell XPS 15 9250 (i7-12700H, 32GB RAM, 1TB SSD, RTX 3050 laptop GPU) running vMix. vMix handles all of our camera inputs, PC graphics and lower thirds, audio, and this year it handles our projector outputs.
+
+![Streaming PC set up and ready](IMG_2635.jpeg)
 
 
 
@@ -117,3 +125,9 @@ To control all of these I used 2 Elgato StreamDecks, a 32-key and a 6-key. The 3
 ## Final Review
 
 Overall this year was the best setup we have had.
+
+On night 4, I ended up sick and had to stay in the hotel. Thankfully Meg was able to take my laptops and hand them off to Nick who I FaceTimed and was able to walk him through setting everything up. He was able to run the stream there and I assisted with some streaming audio changes remotely. 
+
+![Running stream audio remotely from the hotel](IMG_2686.jpeg)
+
+This is one of the main reasons I love having everything computer and network based. Sometimes it can be a bit more complicated due to software issues and my laptop getting a bit overheated, but overall I think it is worth it due to the ease of setup and use.
