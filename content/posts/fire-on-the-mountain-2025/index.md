@@ -61,21 +61,51 @@ This year I ran just one Unifi UK-Ultra AP at front of house, this was for devic
 
 In the past few years we have been very simple for audio, taking a AUX feed from the front of house console and relying on bugging the FOH mixer to make adjustments for the stream.
 
-This year I decided to mix my own stream audio completely. The FOH console is a Allen&Heath QU-32 which can let me connect a computer via USB and get multi-track audio from it. This ran into my second laptop running Pro Tools and using Luke Hendrickson's broadcast template (https://productiononline.com/luke-hendricksons-broadcast-template/)
+This year I decided to mix my own stream audio completely. The FOH console is a Allen&Heath QU-32 which can let me connect a computer via USB and get multi-track audio from it. This ran into my second laptop running Pro Tools and using Luke Hendrickson's broadcast template (https://productiononline.com/luke-hendricksons-broadcast-template/). 
+
+Luke's template is fantastic and gives a great base mix using some plugins for EQ/compression/effects. This lets me mix completely independently from the in-person mix and provide a clear and high quality sound on the live stream.
+
+From the Pro Tools PC it routes a single mono channel back to the mixer and out through an AUX feed into a PreSonus USB interface on my streaming PC into vMix.
 
 
 
 ## Streaming PC
 
+The streaming PC is a Dell XPS 15 9250 (i7-12700H, 32GB RAM, 1TB SSD, RTX 3050 laptop GPU) running vMix. vMix handles all of our camera inputs, PC graphics and lower thirds, audio, and this year it handles our projector outputs.
+
+
+
+### ME2 - Projection
+
+Due to some issues with the iMac they were using and the HDMI adapters we had, I decided to run the projector output through a second mix engine (ME) in vMix. This was a nice feature to have because we could click a button and change the projector output between the iMac screen or the live stream output to show our cameras on the screens.
+
 
 
 ## Cameras
 
+We used a mix of my cameras, RSM's camera, and a camera I borrowed from my church. The primary cameras were our two wireless cameras but we had a stationary and a PTZ camera as well to give some other angles and flexibility.
+
 
 ### Wireless Cameras
+
+Our wireless cameras were our best ones, they were 2 identical Z CAM E2s with **TODO: get lens info** mm lenses and Z CAM's IPMAN transmitters. These cameras have a Micro 4/3 sensor and do great in low-light situations. They are completely battery powered and wireless so they gave us fantastic flexbility to have a camera anywhere under the tent at any time. Due to some issues with our headsets and tripod, we only ran 1 as a mobile camera and left the other manned in the back center of the tent on a platform. 
+
+The stationary camera relied on a tally light to see when they were live and some mutual understanding rules of what kind of shots to get. The mobile camera was on a headset with myself or Nick who filled in for me one night. 
+
+RSM likes to have a lot of personal moments on the live stream such as people worshipping or praying and having the 2 manned cameras lets us pick up those moments and be able to share them and make viewers of the stream feel like they are under the tent in person.
 
 
 ### Stationary Cameras
 
+Our stationary cameras are AIDA Imaging POV box cameras. I ended up only putting one up due to time constraints but was happy with how everything worked out so it wasn't added later. These cameras have small sensors but work well for wide angles so we used one off-center as a stage static camera.
+
 
 ### PTZ Camera
+
+My new camera for this year was an OBSBOT Tail Air camera. This is a little 4K pan/tilt/zoom webcam but they sell an NDI adapter for it. I mounted this on a pole that was almost dead center of the stage and only maybe 10-12 feet from where the pastor would be. 
+
+This turned out to be my favorite camera. Even thought it only has a 4x digital zoom, it still was able to give us clear shots of the whole stage, the altar, and wide shots of the entire tent. The camera has some AI tracking which worked way better than I expected. We used it a few times, but mainly relied on the main manned camera for our follow shots.
+
+### Controls
+
+To control all of these I used 2 Elgato StreamDecks, a 32-key and a 6-key. The 32-key was the main switcher panel while the 6-key was for the second ME and let us have quick buttons to change what input was sent to the projectors.
