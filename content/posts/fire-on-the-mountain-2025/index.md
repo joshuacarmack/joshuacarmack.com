@@ -67,7 +67,7 @@ I set up an old SonicWALL firewall for our production network, just so I can hav
 This year I ran just one Unifi UK-Ultra AP at front of house, this was for devices like my phone and tablet to connect to, but also for our two wireless cameras as they are networked as well.
 
 
-## Audio
+## Audio - Main Stream Feed
 
 In the past few years we have been very simple for audio, taking a AUX feed from the front of house console and relying on bugging the FOH mixer to make adjustments for the stream.
 
@@ -88,6 +88,17 @@ flowchart LR
     ML --|XLR - 1 channel|-->PS
     PS --|USB|--> ML
 {{< /mermaid >}}
+
+### Audio - Crowd/Stage Mics
+
+In addition to the multitracked audio I mixed, I also ran a Behringer X-Air 12 mixer just for my crowd and stage mics. Our audio engineer was super helpful and let me borrow 4 channels on his audio snake from the stage to FOH. From there I ran these into my X-Air mixer. 
+
+![X-Air connections](IMG_2629.jpeg)
+
+From here I was able to set 2 cardoid microphones on the corner of the stage to hopefully capture the crowd singing and just general room tone. I also ran a shotgun microphone pointed at the stage because they tend to do skits or have the program choirs singing and they aren't mic'd. So with this shotgun microphone I was able to capture it enough to make it not dead silent on live stream.
+
+The microphone wasn't in the best spot but I wanted it out of the way and hidden, so it worked enough for me.
+
 
 ## Streaming PC
 
