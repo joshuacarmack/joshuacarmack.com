@@ -84,7 +84,7 @@ flowchart LR
     PS[PreSonus Studio 26x Interface]
     
     QU --|USB - 32 channels|-->ML
-    ML --|USB - 1 channel|-->ML
+    ML --|USB - 1 channel|-->QU
     QU --|XLR - 1 channel|-->PS
     PS --|USB|--> ML
 {{< /mermaid >}}
