@@ -60,7 +60,7 @@ The stage switch plugs into the FOH Switch. This is in a rack next to the stream
 
 ### Firewall
 
-I set up an old firewall for our production network, just so I can have my own DHCP scope and pre-set static IPs on cameras and devices ahead of time. This lets me do a majority of the prep and programming at home and know it will all work. 
+I set up an old SonicWALL firewall for our production network, just so I can have my own DHCP scope and pre-set static IPs on cameras and devices ahead of time. This lets me do a majority of the prep and programming at home and know it will all work. 
 
 ### Access Point
 
@@ -75,9 +75,19 @@ This year I decided to mix my own stream audio completely. The FOH console is a 
 
 Luke's template is fantastic and gives a great base mix using some plugins for EQ/compression/effects. This lets me mix completely independently from the in-person mix and provide a clear and high quality sound on the live stream.
 
-From the Pro Tools PC it routes a single mono channel back to the mixer and out through an AUX feed into a PreSonus USB interface on my streaming PC into vMix.
+From the Pro Tools PC it routes a single mono channel back to the mixer and out through an AUX feed into a PreSonus Studio 26c 2x4 USB audio interface on my streaming PC into vMix.
 
-
+{{< mermaid >}}
+flowchart LR
+    QU[A&H QU-32 Mixer]
+    ML[Mixing Laptop (Pro Tools)]
+    PS[PreSonus Studio 26x Interface]
+    
+    QU --|USB - 32 channels|-->ML
+    ML --|USB - 1 channel|-->ML
+    ML --|XLR - 1 channel|-->PS
+    PS --|USB|--> ML
+{{< /mermaid >}}
 
 ## Streaming PC
 
@@ -118,7 +128,12 @@ My new camera for this year was an OBSBOT Tail Air camera. This is a little 4K p
 
 This turned out to be my favorite camera. Even though it only has a 4x digital zoom, it still was able to give us clear shots of the whole stage, the altar, and wide shots of the entire tent. The camera has some AI tracking which worked way better than I expected. We used it a few times, but mainly relied on the main manned camera for our follow shots.
 
-### Controls
+## vMix Setup
+
+Inside of vMix everything comes in as separate inputs and this lets me do my color adjustments and make sure everything is looking the best it can.
+
+
+## Controls
 
 To control all of these I used 2 Elgato StreamDecks, a 32-key and a 6-key. The 32-key was the main switcher panel while the 6-key was for the second ME and let us have quick buttons to change what input was sent to the projectors.
 
