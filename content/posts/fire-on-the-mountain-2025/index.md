@@ -19,24 +19,24 @@ The main component of the whole setup is the network that I bring in. Almost eve
 
 The main internet connection is brought in by Ben Lomand Connect and they drop a fiber ONT and a wireless router under our stage. They provide a free WiFi for anyone attending but they let us plug into their router for a hard wired connection for our production equipment. 
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     ISP[Ben Lomand Connect Router]
     ISP —> SS[Stage Switch]
-    SS —|Untag 1, Tag 99| FOH[FOH Switch]
-    FOH —|U1| SW[Firewall]
-    FOH —|U99| SW
-    FOH — Mini[Mini FOH Switch]
-    Mini — iMac[Presentation iMac]
+    SS —|Untag 1, Tag 99|—> FOH[FOH Switch]
+    FOH —|U1|—> SW[Firewall]
+    FOH —|U99|—> SW
+    FOH —> Mini[Mini FOH Switch]
+    Mini —> iMac[Presentation iMac]
 
-    FOH — AP((Access Point))
+    FOH —> AP((Access Point))
 
     POV([POV Camera]) —> SS
     S1([Static Stage Camera]) —> SS
     PTZ([PTZ Camera]) —> SS
     WLS1([Wireless Cam 1]) -.-> AP
     WLS2([Wireless Cam 2]) -.-> AP
-```
+{{< /mermaid >}}
 
 
 ## Audio
