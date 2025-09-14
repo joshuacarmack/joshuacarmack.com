@@ -13,6 +13,10 @@ tags:
 
 Every year my wife Meg and I go down to Grundy County, Tennessee with [Recovery Soldiers Ministries](https://recoverysoldiersministries.org/) to their Fire on the Mountain tent revival. Meg is in their worship team and I help out with their tech team at times but during Fire on the Mountain, I’m in charge of providing the live stream. I’ve done this for the past 3 years and this year was the smoothest and quickest setup we have had so I wanted to document it and maybe share some tips and tricks of things I have learned along the way.
 
+## Control Area
+
+In the past, we have worked out of a small food truck trailer which worked but was cramped between me, the audio mixer, and lyrics operator. This year they built us a front of house platform which was so much better. There was room to walk around and not bump into each other.
+
 ## Networking
 
 The main component of the whole setup is the network that I bring in. Almost everything in my streaming setup is network based so a properly setup network is key.
@@ -46,7 +50,7 @@ The first part of the production network is the Stage Switch that is under the s
 
 ### FOH Switch
 
-The stage switch plugs into the FOH Switch. This is in a rack right beside of the stream operating position and has the rest of the network devices. The WAN VLAN terminates here and goes into our firewall.
+The stage switch plugs into the FOH Switch. This is in a rack next to the stream operating position and has the rest of the network devices. The WAN VLAN terminates here and goes into our firewall.
 
 ### Firewall
 
@@ -54,14 +58,14 @@ I set up an old firewall for our production network, just so I can have my own D
 
 ### Access Point
 
-This year I ran just one Unifi UK-Ultra AP at front of house, this was for devices like my phone and tablet to conenct to, but also for our two wireless cameras as they are networked as well.
+This year I ran just one Unifi UK-Ultra AP at front of house, this was for devices like my phone and tablet to connect to, but also for our two wireless cameras as they are networked as well.
 
 
 ## Audio
 
 In the past few years we have been very simple for audio, taking a AUX feed from the front of house console and relying on bugging the FOH mixer to make adjustments for the stream.
 
-This year I decided to mix my own stream audio completely. The FOH console is a Allen&Heath QU-32 which can let me connect a computer via USB and get multi-track audio from it. This ran into my second laptop running Pro Tools and using Luke Hendrickson's broadcast template (https://productiononline.com/luke-hendricksons-broadcast-template/). 
+This year I decided to mix my own stream audio completely. The FOH console is a Allen & Heath QU-32 which can let me connect a computer via USB and get multi-track audio from it. This ran into my second laptop running Pro Tools and using Luke Hendrickson's broadcast template (https://productiononline.com/luke-hendricksons-broadcast-template/). 
 
 Luke's template is fantastic and gives a great base mix using some plugins for EQ/compression/effects. This lets me mix completely independently from the in-person mix and provide a clear and high quality sound on the live stream.
 
@@ -88,7 +92,7 @@ We used a mix of my cameras, RSM's camera, and a camera I borrowed from my churc
 
 ### Wireless Cameras
 
-Our wireless cameras were our best ones, they were 2 identical Z CAM E2s with **TODO: get lens info** mm lenses and Z CAM's IPMAN transmitters. These cameras have a Micro 4/3 sensor and do great in low-light situations. They are completely battery powered and wireless so they gave us fantastic flexbility to have a camera anywhere under the tent at any time. Due to some issues with our headsets and tripod, we only ran 1 as a mobile camera and left the other manned in the back center of the tent on a platform. 
+Our wireless cameras were our best ones, they were 2 identical Z CAM E2s with Olympus M.Zuiko 40-150mm (F4.0-5.6) lenses and Z CAM's IPMAN transmitters. These cameras have a Micro 4/3 sensor and do great in low-light situations. They are completely battery powered and wireless so they gave us fantastic flexibility to have a camera anywhere under the tent at any time. Due to some issues with our headsets and tripod, we only ran 1 as a mobile camera and left the other manned in the back center of the tent on a platform. 
 
 The stationary camera relied on a tally light to see when they were live and some mutual understanding rules of what kind of shots to get. The mobile camera was on a headset with myself or Nick who filled in for me one night. 
 
@@ -104,8 +108,12 @@ Our stationary cameras are AIDA Imaging POV box cameras. I ended up only putting
 
 My new camera for this year was an OBSBOT Tail Air camera. This is a little 4K pan/tilt/zoom webcam but they sell an NDI adapter for it. I mounted this on a pole that was almost dead center of the stage and only maybe 10-12 feet from where the pastor would be. 
 
-This turned out to be my favorite camera. Even thought it only has a 4x digital zoom, it still was able to give us clear shots of the whole stage, the altar, and wide shots of the entire tent. The camera has some AI tracking which worked way better than I expected. We used it a few times, but mainly relied on the main manned camera for our follow shots.
+This turned out to be my favorite camera. Even though it only has a 4x digital zoom, it still was able to give us clear shots of the whole stage, the altar, and wide shots of the entire tent. The camera has some AI tracking which worked way better than I expected. We used it a few times, but mainly relied on the main manned camera for our follow shots.
 
 ### Controls
 
 To control all of these I used 2 Elgato StreamDecks, a 32-key and a 6-key. The 32-key was the main switcher panel while the 6-key was for the second ME and let us have quick buttons to change what input was sent to the projectors.
+
+## Final Review
+
+Overall this year was the best setup we have had.
