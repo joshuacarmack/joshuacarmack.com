@@ -85,7 +85,7 @@ flowchart LR
     
     QU --|USB - 32 channels|-->ML
     ML --|USB - 1 channel|-->ML
-    ML --|XLR - 1 channel|-->PS
+    QU --|XLR - 1 channel|-->PS
     PS --|USB|--> ML
 {{< /mermaid >}}
 
@@ -148,6 +148,10 @@ Inside of vMix everything comes in as separate inputs and this lets me do my col
 
 To control all of these I used 2 Elgato StreamDecks, a 32-key and a 6-key. The 32-key was the main switcher panel while the 6-key was for the second ME and let us have quick buttons to change what input was sent to the projectors.
 
+## Proxmox Server
+
+TODO: add
+
 ## Final Review
 
 Overall this year was the best setup we have had.
@@ -157,3 +161,17 @@ On night 4, I ended up sick and had to stay in the hotel. Thankfully Meg was abl
 ![Running stream audio remotely from the hotel](IMG_2686.jpeg)
 
 This is one of the main reasons I love having everything computer and network based. Sometimes it can be a bit more complicated due to software issues and my laptop getting a bit overheated, but overall I think it is worth it due to the ease of setup and use.
+
+### What would I change for next year?
+
+#### 10-gig networking (or at least 2.5-gig)
+
+I would like to have a 10-gig capable switch at FOH and run all my cameras to there. They are all 1-gig but having a 10Gb link to my computer would help it be able to receive more data from the cameras.
+
+#### Better streaming PC
+
+One of the issues I encountered this year was maxing out the GPU on my laptop. Having 17 inputs in vMix is about the max that laptop will support and it was still having some glitches even when pausing unused inputs.
+
+#### External switch for the projection
+
+I will probably invest in a simple or cheap HDMI switch where we can run the stream output and the presentation computer to it and be able to switch between them on dedicated hardware and offload that processing from my streaming system.
