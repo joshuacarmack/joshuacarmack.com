@@ -89,6 +89,8 @@ flowchart LR
     PS --|USB|--> ML
 {{< /mermaid >}}
 
+![Pro Tools Interface](ProTools.png)
+
 ### Audio - Crowd/Stage Mics
 
 In addition to the multitracked audio I mixed, I also ran a Behringer X-Air 12 mixer just for my crowd and stage mics. Our audio engineer was super helpful and let me borrow 4 channels on his audio snake from the stage to FOH. From there I ran these into my X-Air mixer. 
