@@ -94,4 +94,7 @@ Once we have verified I have pictures of all of the kids it's time to edit.
 
 For 2025 we had about 170 players and I ended up with over 650 photos to go through. I went through and chose the best shot for each plater and team, ending up with about 180 shots total. I ran my script again to verify every player had a photo after I had chosen the best shots.
 
-From this point I did basic edits and crops to all of the photos.
+From this point I did basic edits and crops to all of the photos. I then exported them all to a folder. 
+
+### Creating the player alpha background images
+
