@@ -26,7 +26,7 @@ The main component of the whole setup is the network that I bring in. Almost eve
 
 The main internet connection is brought in by Ben Lomand Connect and they drop a fiber ONT and a wireless router under our stage. They provide a free WiFi for anyone attending but they let us plug into their router for a hard wired connection for our production equipment. 
 
-![Video rack being set up and getting our internet connection going](IMG_2598.jpeg)
+![Video rack being set up](FOH-2.jpeg "Video rack being set up and getting our internet connection active")
 
 See below diagram of our network and I'll explain more in depth about how it's set up and why I did it this way.
 
@@ -53,7 +53,7 @@ flowchart LR
 
 The first part of the production network is the Stage Switch that is under the stage. Our ISP connects into this switch and rides a WAN VLAN back to Front of House (FOH). The main reason for this is so I only have to run one cable between the stage and Front of House, or where the rest of the equipment is. Also on this switch are a few cameras. All of the cameras that we run for the event are networked and PoE powered. This lets us keep cabling clean and have quick setup/teardown processes.
 
-![Location of our stage switch and ISP equipment](IMG_2625.jpeg)
+![Location of our stage switch and ISP equipment](UnderStage1.jpeg "Location of the switch and ISP equipment under the stage")
 
 ### FOH Switch
 
@@ -90,15 +90,23 @@ flowchart LR
     PS --|USB|--> ML
 {{< /mermaid >}}
 
-![Pro Tools Interface](ProTools.png)
+![Pro Tools Interface](ProTools.png "Pro Tools Interface")
+
+Once the audio hits vMix, I used a plugin called Youlean Loudness Meter, which records the loudness of the audio over the length of the stream. This provides a visual representation of how loud the stream is and gives a target to hit to make sure the audio is consistent and everything is able to be heard clearly.
+
+![Youlean Loudness Meter interface](Youlean.png "Youlean Loudness Meter plugin interface")
 
 ### Audio - Crowd/Stage Mics
 
 In addition to the multitracked audio I mixed, I also ran a Behringer X-Air 12 mixer just for my crowd and stage mics. Our audio engineer was super helpful and let me borrow 4 channels on his audio snake from the stage to FOH. From there I ran these into my X-Air mixer. 
 
-![X-Air connections](IMG_2629.jpeg)
+From here I was able to set 2 cardoid microphones on the corner of the stage to hopefully capture the crowd singing and just general room tone. 
 
-From here I was able to set 2 cardoid microphones on the corner of the stage to hopefully capture the crowd singing and just general room tone. I also ran a shotgun microphone pointed at the stage because they tend to do skits or have the program choirs singing and they aren't mic'd. So with this shotgun microphone I was able to capture it enough to make it not dead silent on live stream.
+![Crowd microphones on the stage](StageCrowdMics.jpeg "2 microphones on the corner of the stage facing the crowd")
+
+I also ran a shotgun microphone pointed at the stage because they tend to do skits or have the program choirs singing and they aren't mic'd. So with this shotgun microphone I was able to capture it enough to make it not dead silent on live stream.
+
+![Shotgun microphone on stage](StageShotgun.jpeg "Shotgun microphone facing the stage")
 
 The microphone wasn't in the best spot but I wanted it out of the way and hidden, so it worked enough for me.
 
@@ -107,8 +115,9 @@ The microphone wasn't in the best spot but I wanted it out of the way and hidden
 
 The streaming PC is a Dell XPS 15 9250 (i7-12700H, 32GB RAM, 1TB SSD, RTX 3050 laptop GPU) running vMix. vMix handles all of our camera inputs, PC graphics and lower thirds, audio, and this year it handles our projector outputs.
 
-![Streaming PC set up and ready](IMG_2635.jpeg)
+![Streaming PC set up and ready](FOH-Ready1.jpeg "Streaming and audio PCs set up and ready")
 
+![PCs ready to stream](FOH-Ready2.jpeg "Streaming setup ready for service")
 
 
 ### ME2 - Projection
@@ -128,6 +137,10 @@ Our wireless cameras were our best ones, they were 2 identical Z CAM E2s with Ol
 
 The stationary camera relied on a tally light to see when they were live and some mutual understanding rules of what kind of shots to get. The mobile camera was on a headset with myself or Nick who filled in for me one night. 
 
+![Camera on tripod](FOH-TripodCam2.jpeg "Stationary camera at front of house")
+
+![Tripod on stage](FOH-TripodCam1.jpeg "Stationary camera platform")
+
 RSM likes to have a lot of personal moments on the live stream such as people worshipping or praying and having the 2 manned cameras lets us pick up those moments and be able to share them and make viewers of the stream feel like they are under the tent in person.
 
 
@@ -135,16 +148,22 @@ RSM likes to have a lot of personal moments on the live stream such as people wo
 
 Our stationary cameras are AIDA Imaging POV box cameras. I ended up only putting one up due to time constraints but was happy with how everything worked out so it wasn't added later. These cameras have small sensors but work well for wide angles so we used one off-center as a stage static camera.
 
+![Wide cam on pole](WideCam1.jpeg "Stage camera mounted to the tent pole")
+
 
 ### PTZ Camera
 
 My new camera for this year was an OBSBOT Tail Air camera. This is a little 4K pan/tilt/zoom webcam but they sell an NDI adapter for it. I mounted this on a pole that was almost dead center of the stage and only maybe 10-12 feet from where the pastor would be. 
+
+![PTZ Camera on pole](PTZCam1.jpeg "PTZ camera mounted on pole in front of stage)
 
 This turned out to be my favorite camera. Even though it only has a 4x digital zoom, it still was able to give us clear shots of the whole stage, the altar, and wide shots of the entire tent. The camera has some AI tracking which worked way better than I expected. We used it a few times, but mainly relied on the main manned camera for our follow shots.
 
 ## vMix Setup
 
 Inside of vMix everything comes in as separate inputs and this lets me do my color adjustments and make sure everything is looking the best it can.
+
+![vMix Interface](vMix.png "vMix interface")
 
 
 ## Controls
@@ -153,7 +172,11 @@ To control all of these I used 2 Elgato StreamDecks, a 32-key and a 6-key. The 3
 
 ## Proxmox Server
 
-TODO: add
+One of the pieces of equipment that I have in the rack is a mini-PC running Proxmox. This is running as a server and runs a few different applications such as my UniFi controller for the network equipment like switches and access point as well as a Zabbix proxy for my monitoring system. See my blog post on my monitoring setup:
+
+{{< article link="/post/monitorallthethings/" showSummary=true compactSummary=true >}}
+
+This was set up so I could monitor the cameras and know if something was going down or having issues during the streams or before we got to the tent.
 
 ## Final Review
 
@@ -161,7 +184,7 @@ Overall this year was the best setup we have had.
 
 On night 4, I ended up sick and had to stay in the hotel. Thankfully Meg was able to take my laptops and hand them off to Nick who I FaceTimed and was able to walk him through setting everything up. He was able to run the stream there and I assisted with some streaming audio changes remotely. 
 
-![Running stream audio remotely from the hotel](IMG_2686.jpeg)
+![Running stream audio remotely from the hotel](HotelMixing.jpeg "Mixing with Pro Tools remotely and monitoring the stream")
 
 This is one of the main reasons I love having everything computer and network based. Sometimes it can be a bit more complicated due to software issues and my laptop getting a bit overheated, but overall I think it is worth it due to the ease of setup and use.
 
