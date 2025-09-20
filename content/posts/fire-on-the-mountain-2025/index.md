@@ -235,6 +235,10 @@ I’ll likely add a simple HDMI switch for the projector. That way, we can toggl
 
 ---
 
+## Video Switching Timelapse
+
+{{< youtubeLite id="83o2JLd9_QY" label="Fire on the Mountain 2025 - Video directing POV Timelapse" >}}
+
 ## Gear List
 
 Here’s a quick reference list of the main gear used this year:
