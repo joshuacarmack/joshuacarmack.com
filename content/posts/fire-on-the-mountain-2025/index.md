@@ -186,7 +186,20 @@ This was the main interface for our live stream. From it, I could see all of our
 
 ## Controls
 
-To control it all, I used two Elgato StreamDecks—a 32-key as the main switcher and a 6-key for the second ME. This gave us quick projector output switches.  
+## Controls
+
+To control it all, I used two Elgato Stream Decks — a 32-key as the main switcher and a 6-key for the second ME. This gave us quick projector output switches. Both Stream Decks were driven by [Bitfocus Companion](https://bitfocus.io/companion), one of my favorite pieces of software for live production. Companion lets you design the buttons that appear on the Stream Decks and assign their actions. It supports connections for over 650 different pieces of software and hardware used in live production. In my setup, I only used two: the vMix connection and the Obsbot connection for controlling the PTZ camera.
+
+![Companion Buttons](Companion-Buttons.png "Screenshot of my main button configuration")
+
+This screenshot shows the 32-key Stream Deck, which served as my main switcher.  
+- **Bottom row:** select an input to preview  
+- **Row above:** shows the input that is live  
+- **Next row up:** pause any unused cameras so they don’t appear in preview, reducing processing load  
+- **Top row:** lower thirds for nameplates — pressing a button displayed that person’s name on screen  
+
+The right side had additional controls for cutting or fading the selected input live, and toggling our lyrics lower third.
+
 
 ## Proxmox Server
 
