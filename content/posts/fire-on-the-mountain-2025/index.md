@@ -76,7 +76,7 @@ This year I ran a single UniFi UK-Ultra AP at FOH. This supported devices like m
 
 ## Audio – Main Stream Feed
 
-In past years, we kept things simple: taking an AUX feed from the FOH console and relying on asking the main sound person to adjust levels for the stream.
+In past years, we kept things simple: taking an AUX feed from the FOH console and relying on the main sound engineer to adjust levels for the stream.
 
 This year, I decided to mix the stream audio myself. The FOH console is an Allen & Heath QU-32, which lets me connect a computer via USB and get multitrack audio. I ran this into a second laptop running Pro Tools with [Luke Hendrickson’s broadcast template](https://productiononline.com/luke-hendricksons-broadcast-template/).
 
@@ -103,7 +103,7 @@ flowchart LR
 
 Once the audio hit vMix, I used a plugin called Youlean Loudness Meter. It records the loudness over the length of the stream and provides a visual target, ensuring consistent levels and clear audio.
 
-> **Tip:** Aim for streaming loudness targets like around -14 LUFS (music-heavy) to keep perceived volume consistent without clipping.
+> **Tip:** I used the default -23 LUFS target range, which kept the stream consistent without clipping.
 
 ![Youlean Loudness Meter interface](Youlean.png "Youlean Loudness Meter plugin interface")
 
@@ -111,7 +111,7 @@ Once the audio hit vMix, I used a plugin called Youlean Loudness Meter. It recor
 
 In addition to the multitrack audio, I ran a Behringer X-Air 12 mixer just for crowd and stage mics. Our audio engineer let me borrow four channels on his audio snake from stage to FOH, which I patched into my X-Air.
 
-I set up two condensor microphones on the stage corners to capture the crowd singing and general room tone. 
+I set up two condenser microphones on the stage corners to capture the crowd singing and general room tone. 
 
 ![Crowd microphones on the stage](StageCrowdMics.jpeg "2 microphones on the corner of the stage facing the crowd")
 
@@ -145,7 +145,7 @@ Our best cameras were two identical Z CAM E2s with Olympus M.Zuiko 40–150mm (F
 
 Due to headset and tripod issues, we only ran one as a mobile camera. The other was stationed on a platform in the back center of the tent.  
 
-The stationary camera operator relied on a tally light and some “rules of thumb” for shot selection. The mobile operator and I had a headset for direction.  
+The stationary camera operator relied on a tally light and some general shot guidelines. The mobile operator and I had a headset for direction.  
 
 ![Camera on tripod](FOH-TripodCam2.jpeg "Stationary camera at front of house")
 
@@ -161,7 +161,7 @@ Our stationary cameras are AIDA Imaging POV box cameras. I only set one up due t
 
 ### Point-of-View Camera
 
-In addition to the wide stationary camera, I used an AIDA POV Camera mounted on a microphone stand on the stage for a POV shot. This was mainly used as a drum cam to provide some unique angles and fill-in shots.
+In addition to the wide stationary camera, I used an AIDA POV camera mounted on a microphone stand on the stage for a POV shot. This was mainly used as a drum cam to provide some unique angles and fill-in shots.
 
 ![POV Camera](POVCam.jpeg "POV Camera on the stage")
 
@@ -198,7 +198,7 @@ This let me keep an eye on the cameras and quickly spot if anything went down du
 
 Overall, this was the best setup we’ve ever had.  
 
-On night four, I got sick and had to stay at the hotel. Thankfully, Meg took my laptops to Nick. I FaceTimed him through the setup, and he was able to run the stream while I assisted remotely with some audio tweaks.  
+On night four, I got sick and had to stay at the hotel. Thankfully, Meg took my laptops to Nick. I FaceTimed him to walk through the setup, and he was able to run the stream while I assisted remotely with some audio tweaks.  
 
 ![Running stream audio remotely from the hotel](HotelMixing.jpeg "Mixing with Pro Tools remotely and monitoring the stream")
 
@@ -214,9 +214,7 @@ I’d like a 10-gig switch at FOH, with all cameras connecting there. Even thoug
 
 #### Better streaming PC
 
-I maxed out the GPU on my laptop this year. With 17 inputs in vMix, it was at its limit, and I saw glitches even when pausing unused inputs.
-
-> **Tip:** Add detail here—were the glitches frame drops, stutters on multiview, or encoder overload? That helps others troubleshoot.
+I maxed out the GPU on my laptop this year. With 17 inputs in vMix, it was at its limit, and I saw glitches (mainly frame drops) even when pausing unused inputs.
 
 #### External projection switch
 
@@ -242,14 +240,14 @@ Here’s a quick reference list of the main gear used this year:
   - Laptop running Pro Tools + Luke Hendrickson broadcast template
   - PreSonus Studio 26c 2x4 USB interface
   - Behringer X-Air 12 (crowd/stage mics)
-  - Rode M5 Small-diaphragm Condensor mics (2)
-  - Movo X3-II 11-inch Shotgun mic (1)
+  - Rode M5 small-diaphragm condenser mics (2)
+  - Movo X3-II 11-inch shotgun mic (stage)
 
 - **Video**
   - Dell XPS 15 9250 (i7-12700H, 32GB RAM, RTX 3050) running vMix
   - Z CAM E2 (x2) with Olympus M.Zuiko 40–150mm lenses + IPMAN transmitters
-  - AIDA Imaging HD-NDI-200 Box Camera
-  - AIDA Imaging HD-NDI-MINI POV Camera
+  - AIDA Imaging HD-NDI-200 box camera
+  - AIDA Imaging HD-NDI-MINI POV camera
   - OBSBOT Tail Air PTZ camera (with NDI adapter)
 
 - **Control**
