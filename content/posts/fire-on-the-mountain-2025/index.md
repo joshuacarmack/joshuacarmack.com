@@ -17,7 +17,8 @@ Every year my wife Meg and I go down to Grundy County, Tennessee with [Recovery 
 
 In the past, we have worked out of a small food truck trailer which worked but was cramped between me, the audio mixer, and lyrics operator. This year they built us a front of house platform which was so much better. There was room to walk around and not bump into each other.
 
-![Starting location of video control rack](IMG_2596.jpeg)
+![Photo of video rack and stage in the background](FOH-1.jpeg "Starting location of video control at Front of House")
+
 
 ## Networking
 
