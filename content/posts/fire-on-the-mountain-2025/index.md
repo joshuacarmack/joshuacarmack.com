@@ -111,7 +111,7 @@ Once the audio hit vMix, I used a plugin called Youlean Loudness Meter. It recor
 
 In addition to the multitrack audio, I ran a Behringer X-Air 12 mixer just for crowd and stage mics. Our audio engineer let me borrow four channels on his audio snake from stage to FOH, which I patched into my X-Air.
 
-I set up two cardioid microphones on the stage corners to capture the crowd singing and general room tone. 
+I set up two condensor microphones on the stage corners to capture the crowd singing and general room tone. 
 
 ![Crowd microphones on the stage](StageCrowdMics.jpeg "2 microphones on the corner of the stage facing the crowd")
 
@@ -232,22 +232,24 @@ Here’s a quick reference list of the main gear used this year:
 
 - **Network**
   - Ben Lomand fiber ONT + router
-  - UniFi UK-Ultra Access Point
   - SonicWALL firewall
-  - Stage switch + FOH switch (gigabit)
+  - UniFi UK-Ultra Access Point
+  - UniFi USW-24-PoE (FOH Switch)
+  - UniFi USW-Lite-16-PoE (Stage Switch)
 
 - **Audio**
   - Allen & Heath QU-32 console
   - Laptop running Pro Tools + Luke Hendrickson broadcast template
   - PreSonus Studio 26c 2x4 USB interface
   - Behringer X-Air 12 (crowd/stage mics)
-  - Cardioid mics (2)
-  - Shotgun mic (1)
+  - Rode M5 Small-diaphragm Condensor mics (2)
+  - Movo X3-II 11-inch Shotgun mic (1)
 
 - **Video**
   - Dell XPS 15 9250 (i7-12700H, 32GB RAM, RTX 3050) running vMix
   - Z CAM E2 (x2) with Olympus M.Zuiko 40–150mm lenses + IPMAN transmitters
-  - AIDA Imaging POV cameras (x2, one wide, one POV/drum cam)
+  - AIDA Imaging HD-NDI-200 Box Camera
+  - AIDA Imaging HD-NDI-MINI POV Camera
   - OBSBOT Tail Air PTZ camera (with NDI adapter)
 
 - **Control**
