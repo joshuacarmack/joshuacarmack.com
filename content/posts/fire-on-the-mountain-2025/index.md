@@ -186,8 +186,6 @@ This was the main interface for our live stream. From it, I could see all of our
 
 ## Controls
 
-## Controls
-
 To control it all, I used two Elgato Stream Decks — a 32-key as the main switcher and a 6-key for the second ME. This gave us quick projector output switches. Both Stream Decks were driven by [Bitfocus Companion](https://bitfocus.io/companion), one of my favorite pieces of software for live production. Companion lets you design the buttons that appear on the Stream Decks and assign their actions. It supports connections for over 650 different pieces of software and hardware used in live production. In my setup, I only used two: the vMix connection and the Obsbot connection for controlling the PTZ camera.
 
 ![Companion Buttons](Companion-Buttons.png "Screenshot of my main button configuration")
