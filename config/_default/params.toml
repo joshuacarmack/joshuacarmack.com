@@ -10,7 +10,7 @@ defaultAppearance = "dark" # valid options: light or dark
 autoSwitchAppearance = false
 
 enableSearch = true
-enableCodeCopy = false
+enableCodeCopy = true
 
 replyByEmail = false
 
@@ -95,7 +95,7 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   layoutBackgroundBlur = true # only used when heroStyle equals background or thumbAndBackground
   layoutBackgroundHeaderSpace = true # only used when heroStyle equals background
   showBreadcrumbs = false
-  showSummary = false
+  showSummary = true
   showViews = false
   showLikes = false
   showTableOfContents = false
@@ -144,11 +144,11 @@ forgejoDefaultServer = "https://v11.next.forgejo.org"
   # domain = "llama.yoursite.com"
 
 [umamiAnalytics]
-  #websiteid = "21970643-4d11-47e6-92f5-b88599706bcc"
-  #domain = "llama.yoursite.com"
-  #dataDomains = "yoursite.com,yoursite2.com"
-  #scriptName = ""
-  #enableTrackEvent = false
+  websiteid = "21970643-4d11-47e6-92f5-b88599706bcc"
+  domain = "umami.jclab.xyz"
+  dataDomains = "joshuacarmack.com"
+  scriptName = ""
+  enableTrackEvent = false
 
 [selineAnalytics]
   # token = "XXXXXX"
