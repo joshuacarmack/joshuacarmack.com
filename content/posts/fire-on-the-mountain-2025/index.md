@@ -50,7 +50,7 @@ flowchart LR
     WLS2([Wireless Cam 2]) -.-> AP
 {{< /mermaid >}}
 
-> **Note:** *VLANs* (virtual LANs) let multiple separate networks travel over the same physical cable. “Tag 99” means “put this traffic on VLAN 99”; “Untag 1” means regular, non-tagged traffic (VLAN 1).
+> **Note:** *VLANs* (virtual LANs) let multiple separate networks travel over the same physical cable.
 
 ### Stage Switch
 
