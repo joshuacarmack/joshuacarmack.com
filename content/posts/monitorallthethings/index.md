@@ -2,123 +2,120 @@
 title: "Monitor All the Things!"
 date: 2025-04-21
 draft: false
-summary: "I really like monitoring..."
-tags: ["monitoring","network","server","graphs","alerts"]
+summary: "How I monitor homelab and production systems with Uptime Kuma, Zabbix, and Grafana—what I check, how it alerts, and why it matters."
+tags: ["monitoring","network","server","graphs","alerts","Proxmox","Zabbix","Grafana","UniFi"]
 ---
 
 ## My Monitoring Systems Overview
 
-One of the main projects I like to work on with my homelab and now into some production usage is monitoring. Once I started self-hosting some applications and websites, I knew I wanted to make sure they were always available and working, thus began my journey into the world of monitoring systems. 
+One of my favorite ongoing projects, first in my homelab and now in production, is monitoring. Once I started self-hosting applications and websites, I knew I needed to make sure they were always available. That began my journey into the world of monitoring systems.  
 
-It seems like a boring topic, checking if something is working or not, but to me it's kind of a game of how much data can I pull and monitor? I've been monitoring everything from website uptime, to network utilization, to battery and power status, and even to copier toner monitoring. Why? Because the data is out there and available.
+It might sound boring—just checking if something is working—but to me it’s a game: how much data can I pull and visualize? I monitor everything from website uptime and network utilization to battery and power status, and even copier toner. The appeal is simple: the data is out there, and I can use it.
 
-## How it began: Uptime Kuma
+## How It Began: Uptime Kuma
 
-The very first monitoring system I set up is a project called Uptime Kuma. (https://github.com/louislam/uptime-kuma). This is a simple web app primarily designed for ping-based monitoring. Its primary function is to perform basic checks to determine if something is up or down.
+The very first monitoring system I set up was [Uptime Kuma](https://github.com/louislam/uptime-kuma). It’s a simple web app for basic checks like HTTP, ping/ICMP, TCP ports, and keyword monitoring.
 
-This monitoring system can be utilized to check if a location’s internet connection is up or to ensure that a website is accessible. Below is an example of a monitor that pings my church’s WAN IP every minute to alert me when it goes down. It also provides a graph of the response time, and a history of the status.
+I use it to confirm a site’s availability or to check a location’s internet connection. Below is an example monitor that pings my church’s WAN IP every minute. It provides a graph of response times and a history of status changes.
 
-![Uptime Kuma Ping](rbc-wan-ping.png)
+![Uptime Kuma: WAN ping monitor](rbc-wan-ping.png "Pings church WAN every minute; alert + response time history.")
 
-Below is an alert from where a WAN connection monitor went down and sent an alert to my phone. 
+When the WAN goes down, I get an alert on my phone:
 
-Uptime Kuma can do alerts to a lot of different locations like email, Discord, or different push notification services. I use Pushover for these as it's a simple one-time payment service. 
+![Uptime Kuma: Pushover alert](down-alert.png "Push alert when WAN goes down.")
 
-![Uptime Kuma Alert](down-alert.png)
+Uptime Kuma supports alerts to many platforms including email, Discord, and push services. I use [Pushover](https://pushover.net/), a simple one-time purchase, for push notifications.
 
-Uptime Kuma can also do other monitors such as checking a website for a specific word or phrase to make sure it is there, or checking specific ports. 
+It can also check a site for specific words or phrases to ensure they’re present, or check open ports.  
 
-For instance, I use Uptime Kuma to monitor a radio system for my radio club. We employ a system called Echolink, which essentially hosts a radio at my house on the internet, enabling other radio operators to communicate on our repeater. The Echolink system has a webpage that lists all active connections. I can set up a keyword monitor in Uptime Kuma that checks this page and looks for our node number. If the number is absent from the list, it indicates that our node has been disconnected, and I receive an alert. 
+For example, my radio club uses **EchoLink**, which exposes a status page listing active connections. I set up a keyword monitor in Uptime Kuma that looks for our node number. If the number isn’t on the page, I get an alert that our node disconnected.  
 
-![Uptime Kuma Radio Keyword Monitor](echolink-node-ping.png)
+![EchoLink keyword monitor](echolink-node-ping.png "Checks EchoLink status page for our node number.")
 
 ## Migration to Zabbix
 
-After using Uptime Kuma for a while, I realized I needed to expand my monitoring capabilities. While Uptime Kuma is a great program, it has some limitations. The main thing I wanted was a way to monitor things inside of my network and church's network while still having the main monitoring cloud based for more reliable monitoring.
+After a while, I realized I needed more. While Uptime Kuma is great, it has limitations. The biggest missing piece was monitoring inside my home and church networks while keeping the main system cloud-hosted for resilience.
 
-I tried out a few other monitoring suites, but I ended up choosing Zabbix. Zabbix is a free monitoring tool that is incredibly powerful and expandable. 
+I tried a few suites but landed on **Zabbix**. It’s free, powerful, and expandable.  
 
-Zabbix’s ability to be configured as a distributed monitoring system was the primary draw for me. I have a primary Zabbix Server hosted on a cloud VPS in Linode’s Atlanta data center. Additionally, I have Zabbix Proxies set up at my home and church. These are small virtual machines that perform all the monitoring within the network and then report back to the main server. See the diagram below for a visual representation.
+The killer feature for me was its distributed model. My primary Zabbix server runs on a VPS in Linode’s Atlanta datacenter. I also run Zabbix proxies at home and at church. These small VMs handle all monitoring locally and forward results back to the main server.
 
-<div style="background-color:white; padding: 20px">
 {{< mermaid >}}
 graph TD
-    %% Top layer
     ZabbixServer[Zabbix Server - Cloud]
-
-    %% Middle layer - Proxies
     HomeProxy[Zabbix Proxy - Home]
     ChurchProxy[Zabbix Proxy - Church]
 
     ZabbixServer --> HomeProxy
     ZabbixServer --> ChurchProxy
 
-    %% Home network
-    subgraph "🏠 Home Network"
+    subgraph Home_Network
         HomeProxy --> HomePC1[PC 1]
         HomeProxy --> HomePC2[PC 2]
         HomeProxy --> HomeSwitch[Network Switch]
     end
 
-    %% Church network
-    subgraph "⛪ Church Network"
+    subgraph Church_Network
         ChurchProxy --> ChurchPC1[PC 1]
         ChurchProxy --> ChurchPC2[PC 2]
         ChurchProxy --> ChurchRouter[Router]
     end
 {{< /mermaid >}}
-</div>
 
-This setup offers both flexibility and security. Each location has a proxy that receives data from devices there. The proxy then encrypts the data and sends it to the main server for processing, storage, and alerting. Additionally, each proxy can perform active checks on devices like printers, network switches, and batteries that can’t run a Zabbix agent to report data. 
+Each proxy receives data from devices on its network, then securely forwards it to the cloud server. Proxies also perform active checks on devices like printers, switches, and UPS units that don’t run agents.  
 
-For church, all our computers are equipped with Zabbix agents that continuously report various data points to the Zabbix system. These data points include uptime, frequency of reboots, and utilization of drive, processor, and memory resources. This comprehensive monitoring system enables me to closely monitor all our production systems, ensuring optimal performance and capacity utilization. 
+At church, all PCs run the Zabbix agent, reporting uptime, reboots, CPU, memory, and disk usage. This lets me keep a close watch on performance and capacity.  
 
-Zabbix itself offers some impressive reporting capabilities. On the homepage, it displays any alerts that have been triggered across various systems. In the screenshot provided below, an informative alert is displayed about an access point at church that has reached high utilization. Additionally, two warning alerts are shown: one for disk space on a media computer and the other for the toner cartridge in my printer, which is running low.
+The Zabbix dashboard shows triggered alerts at a glance. Below: an access point at church hitting high utilization, plus warnings for disk space and low toner.  
 
-![Zabbix Problems](zabbix-problems.png)
+![Zabbix Problems view](zabbix-problems.png "AP high utilization; disk space warning; low toner.")
 
-Zabbix can also create diagrams that visualize networks and identify any issues present at specific points in the map. Below is an overview map of Ridgeview’s network, showcasing all the switches, access points, cameras, and major systems. This comprehensive view provides a quick overview of the network’s wiring and aids in troubleshooting issues more efficiently. Notably, the MEDIA2 PC is alerting for the disk space issue. 
+Zabbix can also map entire networks. Here’s Ridgeview’s layout—switches, APs, cameras, and major systems—highlighting a disk alert on the MEDIA2 PC.  
 
-![Zabbix Network Diagram](zabbix-church-map.png)
+![Ridgeview network map in Zabbix](zabbix-church-map.png "Switches, APs, cameras, and key systems.")
 
+*Note: I host the Zabbix server in the cloud so monitoring continues even if my home or church connections go down. Local proxies keep gathering data until they reconnect.*
 
-## What I'm monitoring in Zabbix
+## What I Monitor in Zabbix
 
 ### Homelab
 
-For my homelab I have Zabbix monitoring my Proxmox cluster. Zabbix can do auto-discovery of new virtual machines and containers and give basic alerts from them without me having to do anything. So if I spin up a new container to try an application Zabbix will see that container and can do monitoring of its uptime, memory usage, storage usage, and a few other things. 
+Zabbix monitors my Proxmox cluster. It auto-discovers new VMs and containers and tracks uptime, memory, storage, and CPU. No manual setup needed.  
 
-In the example below, this is an alert showing that a virtual machine is running. There is not a Zabbix agent running on this VM and this alert is coming from my proxmox cluster monitoring. 
+Here’s an alert from Proxmox showing a VM stopped. The VM has no agent; this is purely from cluster monitoring:  
 
-![Zabbix alert showing a virtual machine is not running](zabbix-vm-alert.png)
+![Zabbix VM alert](zabbix-vm-alert.png "Alert showing a VM stopped, detected by Proxmox.")
 
 ### Infrastructure
 
-I also use [patricegautier/unifiZabbix](https://github.com/patricegautier/unifiZabbix) to connect to my Unifi controller and pull data from it. This is used on my home and church proxies to connect to all the switches and access points. 
+I use [patricegautier/unifiZabbix](https://github.com/patricegautier/unifiZabbix) to pull UniFi controller data. Both proxies connect to UniFi switches and APs.  
 
-Below is all of the data points that it pulls from my home Unifi Access Point. It includes some helpful things like uptime, the total TX/RX, and speeds.
+Here’s data from a UniFi AP at home—uptime, TX/RX totals, and link rates:  
 
-![Unifi AP data](zabbix-unifiap-data.png)
+![UniFi AP item list in Zabbix](zabbix-unifiap-data.png "Uptime, TX/RX totals, rates.")
 
-With all of that data we need to do something with it. Thankfully the template comes with triggers built in. For access points, the image below shows the triggers that have been applied to the AP. I can get alerts on things like if the AP is rebooting, has high CPU or memory usage, or even has upgrades available. 
+The template includes built-in triggers:  
 
-![Unifi AP triggers](zabbix-unifiap-triggers.png)
+![UniFi AP triggers](zabbix-unifiap-triggers.png "Reboot, CPU/memory high, upgrades available.")
 
 ### Computers
 
-On computers that I directly support (my own, my wife's, and church computers) I have a Zabbix Agent installed on them. This takes data from the computers and sends it to the main Zabbix server through that site's proxy. Adding an agent gives me tons of data such as disk usage, network interface statistics and speed, services that are running or not running, memory usage, and uptime. On my desktop, Zabbix has 165 data points it gets. The default template has over 70 alerts that it can do such as disk space being too low or a disk being overloaded, if the network card link speed changes for some reason, if a service that is on Automatic mode is not running, or if a computer is rebooting not in a maintenance window that I have set for when they run updates.
+On my own, my wife’s, and church PCs, I install the Zabbix agent. Each PC sends disk usage, network stats, service status, memory usage, and uptime. On my desktop, Zabbix pulls 165 items. The default template includes 70+ alerts—for disk space, disk load, NIC link speed changes, failed auto-start services, or unexpected reboots outside maintenance windows.
 
 ### Work Clients
 
-For work clients on some that I care about, I have a simple ICMP Ping that runs every few minutes to their WAN IP. This can let me know if their connection is down and also gives me a history of when it does go down. This has helped a lot with troubleshooting their internet connections and seeing exactly when it happens.
+For a few work clients, I just run an ICMP ping to their WAN IP. This gives me uptime history and alerts for connection issues. It’s been invaluable for troubleshooting.
 
 ## Displaying Data With Grafana
 
-Zabbix can give good insights into alerts, but it doesn't present data too nicely and that is where Grafana comes into play.
+Zabbix surfaces alerts well, but it’s not optimized for dashboards. That’s where **Grafana** shines.  
 
-Grafana is made to take in multiple sources of data and make pretty graphs and diagrams out of it. There are several data sources that I use for Grafana including pulling data right from Zabbix, querying MySQL databases, and even websites and other data feeds.
+Grafana pulls data from Zabbix, MySQL queries, and other feeds. Here’s my “Sunday Dashboard”—showing media PC utilization and network graphs, plus client counts per wireless AP.  
 
-In the screenshot below, I'm taking in these data points from Zabbix and making charts and graphs out of them. This is my "Sunday Dashboard" which gives me statistics on the utilization on our media computers and also some network graphs. I can also see how many people are connected to each wireless access point throughout our campus.
+![Grafana Sunday Dashboard](Screenshot-2025-08-01-132315.png "Media PC stats and AP client counts.")
 
-![Grafana Dashboard](<Screenshot 2025-08-01 132315.png>)
+## Custom Alert – Church Streaming
 
+One problem I wanted to solve was ensuring our live streams stop when the service ends. I used to forget, leaving a black screen broadcasting for hours.  
+
+My fix: a custom Zabbix trigger. I ping the soundboard constantly and check vMix’s API for stream status. If the stream is active **after the soundboard goes offline**, Zabbix raises a critical alert to my phone. That immediate alert reminds me to stop the stream.  
