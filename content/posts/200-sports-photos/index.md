@@ -1,7 +1,7 @@
 ---
 title: "Taking 200 Soccer Player Photos"
 date: 2025-08-22
-draft: false
+draft: true
 summary: "Every year I help take player photos for our church's soccer league."
 tags: ["photography","automation","photos","photoshop","camera"]
 ---
