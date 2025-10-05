@@ -1,4 +1,4 @@
-—
+---
 title: “My home inventory with HomeBox”
 date: 2025-10-04
 draft: false
@@ -7,5 +7,5 @@ tags:
   - network
   - self hosting 
   - inventory
-—
+---
 
