@@ -22,5 +22,27 @@ But why do we run this? It's to allow people out of range of our repeater to use
 
 # Why my house?
 
-I volunteered to run the EchoLink system because I love dealing with networks and servers and also radios, so this was a good match. The system originally was a Windows XP computer and a radio and since I've done some upgrades to it.
+I volunteered to run the EchoLink system because I love dealing with networks and servers and also radios, so this was a good match. I also live right in downtown Kingsport below our tower so I can run the radio on a low power and still hit the repeater just fine.
 
+# The Setup
+
+The EchoLink station got handed to me as a Windows XP computer, radio, and power supply.
+
+![Radio with old computer](OriginalEchoLink.jpg)
+
+I immediately replaced it with a small form factor PC running Windows 10. 
+![Radio with SFF PC](EchoLink2.jpeg)
+
+It ran like this for a year or so at my parents house until I moved. When I moved it stayed on the SFF PC for a bit until I got my new server in place.
+
+![EchoLink setup in the rack](EchoLink3.jpeg)
+
+When I got my new server in place, I decided to virtualize the actual EchoLink server.
+
+![Server rack in my basement](EchoLink4.jpeg)
+
+The SFF PC was retired and I set up a Windows 11 virtual machine on my main server running Proxmox. 
+
+# The Setup on Proxmox
+
+I run Proxmox for my homelab and also some production servers so it was a no brainer for me to set up EchoLink on. Proxmox runs as the operating system on the physical server but lets you run many virtual servers on it. 
