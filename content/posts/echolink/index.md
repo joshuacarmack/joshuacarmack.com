@@ -61,7 +61,7 @@ One of the things I enjoy doing is monitoring services I run and EchoLink is no 
 
 ### Zabbix
 
-Zabbix has an agent that is installed on the Virtual Machine that monitors the performance of the system such as uptime, CPU uage, and memory usage. This will give me alerts as soon as a problem is detected on the system. Below are just a few of the data points being monitored and that can send alerts.
+Zabbix has an agent that is installed on the Virtual Machine that monitors the performance of the system such as uptime, CPU usage, and memory usage. This will give me alerts as soon as a problem is detected on the system. Below are just a few of the data points being monitored and that can send alerts. The alerts can be sent as emails or if they are high priority (such as the server being down or running at 100% utilization for an extended period of time) they can be sent directly to my phone. 
 
 ![Items being monitored by Zabbix Agent 1](EchoLink-Zabbix1.png)
 ![Items being monitored by Zabbix Agent 2](EchoLink-Zabbix2.png)
@@ -72,15 +72,19 @@ Uptime Kuma is running on a cloud server and monitors EchoLink externally. I mai
 
 ![Screenshot of Uptime Kuma](EchoLink-UptimeKuma1.png)
 
-In the EchoLink section there are 3 monitors. The top one is the entire system status. The middle one is the EchoLink host which is the virtual machine. EchoLink provides an admin section for us to manage it remotely so this is monitoring that admin page and checking if it is accessible and Uptime Kuma can log into it. This tells me if that server is running or not. It also checks the admin settings to see if EchoLink is disabled or enabled. We can turn off the link if there are problems or abuse going on, so the server may be running but the link may be disabled. This will show if the link is disabled.
+In the EchoLink section there are 3 monitors. The top one is the entire system status which is a group of the other two monitors so I can just get 1 alert if both monitors fail, which decreases alert fatigue and spam to my phone.
 
-The last item is the EchoLink Node Status. The EchoLink software can be running and enabled, but not connected to EchoLink's systems. This monitor checks EchoLink's public current logins page at [https://www.echolink.org/logins.jsp](https://www.echolink.org/logins.jsp). This listing shows all nodes connected to EchoLink. Uptime Kuma lets me query that page and see if our node number (874789) is in the list. If it is, I know our node is connected and working. If not, there may be an issue with EchoLink's servers. 
+The middle one is the EchoLink host which is the virtual machine. EchoLink provides an admin section for us to manage it remotely so this is monitoring that admin page and checking if it is accessible and Uptime Kuma can log into it. This tells me if that server is running or not. 
 
-This is done with a simple HTTP(s) - Keyword montior as below.
+It also checks the admin settings to see if EchoLink is disabled or enabled. We can turn off the link if there are problems or abuse going on, so the server may be running but the link may be disabled. This will show if the link is disabled.
+
+The last item is the EchoLink Node Status. The EchoLink software can be running and enabled, but not connected to EchoLink's systems. This monitor checks EchoLink's public current logins page at [https://www.echolink.org/logins.jsp](https://www.echolink.org/logins.jsp). This listing shows all nodes connected to EchoLink. Uptime Kuma lets me query that page and see if our node number (874789) is in the list. If it is, I know our node is connected and working. If not, there may be an issue with EchoLink's servers or our server. 
+
+This is done with a simple HTTP(s) - Keyword monitor as below.
 
 ![Settings in Uptime Kuma for checking a keyword](EchoLink-UptimeKumaKeyword.png)
 
-Using Uptime Kuma also lets me have a public badge of the status of the entire EchoLink system on our website at https://w4trc.org. At the very bottom and on our repeater page you can always see the overall status of EchoLink.
+Using Uptime Kuma also lets me have a public badge of the status of the entire EchoLink system on our website at https://w4trc.org. At the very bottom and on our repeater page you can always see the overall current status of EchoLink. Members can check here to see if EchoLink is working or not.
 
 ![Uptime Kuma badge on our website](EchoLink-UptimeKumaBadge.png)
 
