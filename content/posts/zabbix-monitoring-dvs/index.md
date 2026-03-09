@@ -1,7 +1,7 @@
 ---
 title: Monitoring Dante Virtual Soundcard with Zabbix
 date: 2026-03-08
-draft: true
+draft: false
 summary: Getting alerts if Dante stops working.
 tags:
   - network
