@@ -3,7 +3,7 @@ title: "Running the W4TRC EchoLink System"
 date: 2025-11-09
 draft: false
 summary: "Hosting a radio at my house that anyone can use."
-tags: ["radio","server","networking","echolink"]
+tags: ["radio","server","networking","echolink","proxmox"]
 ---
 
 I run a system called EchoLink that allows any amateur radio operator to connect to our repeater on Bays Mountain.
