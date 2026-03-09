@@ -66,4 +66,4 @@ This can also show in our system status dashboard and let us know as soon as the
 
 ## Conclusion
 
-This was a simple addition to add, but can save us a lot of time and troubleshooting by not having to wonder why we don't have audio. We are able to catch this issue before it has any chance of impacting service and can be an easy fix. I'm always looking for ways to make our technology setup better and things like this is what ties it all together.
+This was a simple addition to add, but can save us a lot of time and troubleshooting by not having to wonder why we don't have audio. We are able to catch this issue before it has any chance of impacting service and can be an easy fix. I'm always looking for ways to make our technology setup better and this kind of thing is what ties it all together.
