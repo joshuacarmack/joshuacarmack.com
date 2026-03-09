@@ -34,7 +34,7 @@ Another easy way for Zabbix to monitor things is through monitoring a network po
 
 My final attempt was monitoring the audio device in Windows itself. When DVS is running and started, it will show the audio devices.
 
-**TODO - Insert photo of audio devices
+![Audio device command output](audio-devices.jpeg)
 
 When DVS is stopped or not running, it will show the DVS Transmit channels but show them as Unknown. This is the easy way of telling if DVS is running.
 
@@ -48,7 +48,7 @@ This checks for the audio device for Transmit 1-2 Dante and only if they are OK,
 
 In Zabbix, create a new item on MEDIA1 with type ‘Zabbix agent’, key dvs.audiodevice, and a 1-minute update interval.
 
-**TODO - Add Zabbix item screenshot
+![Zabbix item configuration screen](zabbix-dvs-item.jpeg)
 
 From this, we can add an item in Zabbix on this host to check that parameter every minute and know if DVS is running or not.
 
@@ -60,7 +60,7 @@ last(/RBC-MEDIA1/dvs.audiodevice)=0
 
 If the last time it checks the audio device, it sees no DVS output, it triggers a high level alert.
 
-**TODO - Add Zabbix screenshot of the trigger
+![Zabbix trigger configuration screen](zabbix-dvs-trigger.jpeg)
 
 This can also show in our system status dashboard and let us know as soon as the issue occurs and takes a lot of guesswork out of troubleshooting.
 
