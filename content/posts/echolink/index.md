@@ -51,6 +51,10 @@ I run Proxmox for my homelab and also some production servers so running EchoLin
 
 Running this on Proxmox gives me such flexibility to easily make changes and take backups of EchoLink easily. I can take a snapshot before running an update so if the update goes wrong, I can revert back to before the update easily. This also lets me run it on existing hardware and not need more computer equipment running.
 
+From the web interface of Proxmox, I can see the server specs and easily troubleshoot and manage EchoLink from anywhere.
+
+![EchoLink Proxmox VM](EchoLinkServerProxmox.png)
+
 # Conclusion
 
 EchoLink is a fun project to run and it helps our community and club members to be able to use our equipment no matter where they may be.
