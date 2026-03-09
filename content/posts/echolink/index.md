@@ -8,23 +8,23 @@ tags: ["radio","server","networking","echolink","proxmox"]
 
 I run a system called EchoLink that allows any amateur radio operator to connect to our repeater on Bays Mountain.
 
-# What is EchoLink?
+## What is EchoLink?
 
 [EchoLink](https://echolink.org/) allows licensed amateur radio operators to connect to radios, repeaters, and conferences over the internet. Using your phone or a computer program, you can simply select any station that is online and connect to it and talk on that connection. Some of the stations are online only and some connect to repeaters like ours.
 
 For Kingsport Amateur Radio Club, if you search W4TRC/R you will find our repeater link. If you connect to this in EchoLink you are connecting to a radio in my basement which is programmed to transmit to our repeater on Bays Mountain. This allows you to be anywhere in the world, connect to our repeater, and talk with anyone over radio in the Tri-Cities area.
 
-# Why EchoLink?
+## Why EchoLink?
 
 Much of amateur radio is about emergency communications, though this is not an emergency communications method, it's just a nice thing to have. This system is reliant on the internet connection and power staying online at my house, so in a storm there is a chance it may not work.
 
 Why do we run this? It's to allow people out of range of our repeater to use it to check into our nets or talk to their friends. We run a [Sunday Night Net](https://w4trc.org/nets) to pass traffic, have discussions, receive help, and sell items. This allows people to continue to check in and participate if they are not near a radio or out of the range of our repeater.
 
-# Why my house?
+## Why my house?
 
 I volunteered to run the EchoLink system because I love dealing with networks and servers and also radios, so this was a good match. I also live right in downtown Kingsport below our tower so I can run the radio on a low power and still hit the repeater just fine.
 
-# The Setup
+## The Setup
 
 The EchoLink station got handed to me as a Windows XP computer, radio, and power supply.
 
@@ -43,11 +43,11 @@ When I got my new server in place, I decided to virtualize the actual EchoLink s
 
 The SFF PC was retired and I set up a Windows 11 virtual machine on my main server running Proxmox. 
 
-# The Setup on Proxmox
+## The Setup on Proxmox
 
 I run Proxmox for my homelab and also some production servers so running EchoLink on it was a no-brainer. Proxmox runs as the operating system on the physical server but lets you run many virtual machines on it. 
 
-## Why Proxmox?
+### Why Proxmox?
 
 Running this on Proxmox gives me such flexibility to easily make changes and take backups of EchoLink easily. I can take a snapshot before running an update so if the update goes wrong, I can revert back to before the update easily. This also lets me run it on existing hardware and not need more computer equipment running.
 
@@ -55,7 +55,9 @@ From the web interface of Proxmox, I can see the server specs and easily trouble
 
 ![EchoLink Proxmox VM](EchoLinkServerProxmox.png)
 
-# Conclusion
+## Monitoring EchoLink
+
+## Conclusion
 
 EchoLink is a fun project to run and it helps our community and club members to be able to use our equipment no matter where they may be.
 
