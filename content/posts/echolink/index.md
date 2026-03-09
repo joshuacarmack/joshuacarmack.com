@@ -1,7 +1,7 @@
 ---
 title: "Running the W4TRC EchoLink System"
 date: 2025-11-09
-draft: true
+draft: false
 summary: "Hosting a radio at my house that anyone can use."
 tags: ["radio","server","networking","echolink"]
 ---
@@ -16,9 +16,9 @@ For Kingsport Amateur Radio Club, if you search W4TRC/R you will find our repeat
 
 # Why EchoLink?
 
-Much of amateur radio is about emergency communications, which this is not an emergency communications method, it's just a nice thing to have. This system is reliant on the internet connection and power staying online at my house, so in a storm there is a chance it may not work.
+Much of amateur radio is about emergency communications, though this is not an emergency communications method, it's just a nice thing to have. This system is reliant on the internet connection and power staying online at my house, so in a storm there is a chance it may not work.
 
-But why do we run this? It's to allow people out of range of our repeater to use it to check into our nets or talk to their friends. We run a [Sunday Night Net](https://w4trc.org/nets) to pass traffic, have discussions, receive help, and sell items. This allows people to continue to check in and participate if they are not near a radio or out of the range of our repeater.
+Why do we run this? It's to allow people out of range of our repeater to use it to check into our nets or talk to their friends. We run a [Sunday Night Net](https://w4trc.org/nets) to pass traffic, have discussions, receive help, and sell items. This allows people to continue to check in and participate if they are not near a radio or out of the range of our repeater.
 
 # Why my house?
 
@@ -33,7 +33,7 @@ The EchoLink station got handed to me as a Windows XP computer, radio, and power
 I immediately replaced it with a small form factor PC running Windows 10. 
 ![Radio with SFF PC](EchoLink2.jpeg)
 
-It ran like this for a year or so at my parents house until I moved. When I moved it stayed on the SFF PC for a bit until I got my new server in place.
+It ran like this for a year or so at my parents' house until I moved. When I moved it stayed on the SFF PC for a bit until I got my new server in place.
 
 ![EchoLink setup in the rack](EchoLink3.jpeg)
 
@@ -45,4 +45,14 @@ The SFF PC was retired and I set up a Windows 11 virtual machine on my main serv
 
 # The Setup on Proxmox
 
-I run Proxmox for my homelab and also some production servers so it was a no brainer for me to set up EchoLink on. Proxmox runs as the operating system on the physical server but lets you run many virtual servers on it. 
+I run Proxmox for my homelab and also some production servers so running EchoLink on it was a no-brainer. Proxmox runs as the operating system on the physical server but lets you run many virtual machines on it. 
+
+## Why Proxmox?
+
+Running this on Proxmox gives me such flexibility to easily make changes and take backups of EchoLink easily. I can take a snapshot before running an update so if the update goes wrong, I can revert back to before the update easily. This also lets me run it on existing hardware and not need more computer equipment running.
+
+# Conclusion
+
+EchoLink is a fun project to run and it helps our community and club members to be able to use our equipment no matter where they may be.
+
+Interested in amateur radio? Check out Kingsport Amateur Radio Club at [w4trc.org](https://w4trc.org).
