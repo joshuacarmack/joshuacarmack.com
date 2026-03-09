@@ -1,0 +1,9 @@
+@media (min-width: 1024px) {
+  .article-toc-container {
+    flex-shrink: 0;
+  }
+
+  .article-body-container {
+    flex: 1;
+  }
+}
