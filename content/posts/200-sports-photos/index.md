@@ -1,7 +1,7 @@
 ---
 title: "Taking 200 Soccer Player Photos"
 date: 2025-08-22
-draft: true
+draft: false
 summary: "Every year I help take player photos for our church's soccer league."
 tags: ["photography","automation","photos","photoshop","camera"]
 ---
@@ -98,3 +98,38 @@ From this point I did basic edits and crops to all of the photos. I then exporte
 
 ### Creating the player alpha background images
 
+The first round of automation is to create images of just the players with no background. To accomplish this I use Mars Premedia Batch Web Images Photoshop plugin (https://www.marspremedia.com/software/photoshop/batch-web-images). This lets me select my folder of cropped photos, and it automatically removes the background and crops into the player and exports a PNG file.
+
+Sometimes this isn't perfect and requires a bit of touchups, but out of 160 players this year, I only had to manually edit about 5 of them.
+
+After this process runs, I now have a cutout image of each player. These get saved into another folder.
+
+![Image showing the player cutout before and after](PlayerCutout.jpg)
+
+### Creating the player card image
+
+Now that we have a cutout of each player we can begin assembling the player card. I wanted to give the players a trading card style image with their photo, team, and name. 
+
+I start by saving my player roster as a CSV file for the automation to read. For this automation I use Mars Premedia Variable Images from CSV (https://www.marspremedia.com/software/photoshop/variable-images-from-csv). This lets me create a Photoshop template with our background and where I want the text and image.
+
+![Photoshop template of the player card](PlayerCard-Photoshop.png)
+
+I then can run this automation that swaps out the text elements with the players name, and the photo with that player's cutout. This takes a bit to run, but once it finishes I have a folder of player cards, one for each player.
+
+### Sorting and Renaming
+
+Now that we have both images created, it's time to rename and sort them into team folders. Using a Powershell script I made, we can start by sorting the images into team folders. This is simply done by moving each image into a folder that matches the first 2 digits of the filename which is the team ID. 
+
+Once the images are sorted into team folders, we can use Bulk Rename Utility (https://www.bulkrenameutility.co.uk/) to rename these files by matching the player ID to their name in the CSV. We can set a template to name each file in any format and I usually do ```UPWARD2025-PlayerFirstLast.jpg``` or ```UPWARD2025-PlayerFirstLast-Card.jpg```.
+
+Now we have both images sorted into a team folder. Then we can drop in each team photo into the folders and everything is sorted.
+
+## Finishing Up
+
+Once everything is sorted, we can upload this to our gallery site. In our case we use ShootProof. This lets me create a gallery and have albums, one for each team. This makes it easier for parents to find their child. We allow free downloads and use ShootProof's photo labs to sell prints at cost if the parents want.
+
+## Conclusion
+
+This is a fun but challenging event every year. From shooting hundreds of photos to delivering galleries only takes about 2 weeks thanks to a lot of scripting and automation. 
+
+Interested in having us photograph your sports team? Contact us by emailing [contact@contentbycarmack.com](mailto:contact@contentbycarmack.com)
