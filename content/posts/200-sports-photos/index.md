@@ -104,7 +104,8 @@ Sometimes this isn't perfect and requires a bit of touchups, but out of 160 play
 
 After this process runs, I now have a cutout image of each player. These get saved into another folder.
 
-![Image showing the player cutout before and after](PlayerCutout.jpg)
+![Image showing the player cutout before and after](PlayerCutout.jpg "Thanks for letting me use your photo, Ben!")
+
 
 ### Creating the player card image
 
