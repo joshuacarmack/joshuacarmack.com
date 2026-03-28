@@ -2,7 +2,7 @@
 title: Using Apple Shortcuts To Automate Our Sanctuary
 date: 2026-03-27
 draft: true
-summary: Seeting up Apple Shortcuts to trigger Bitfocus Companion to turn on and off sound equipment. 
+summary: Setting up Apple Shortcuts to trigger Bitfocus Companion to turn on and off sound equipment. 
 tags:
   - network
   - automation
@@ -18,7 +18,7 @@ One push of a button starts a sequence of turning on power, turning on our audio
 
 ## The Hardware
 
-To accomplish this, we are using some TP-Link Smart Plugs. These are connected to our wireless network and then to Bitfocus Companion. These are simple plugs that we plug each device into. We have one on our amp rack, one on our stage box, and one on our mixer. This allows us to turn them on and off from the TP-Link app and eventually Bitfocus Companion.
+To accomplish this, we are using some TP-Link Smart Plugs. These are connected to our wireless network, pair with TP-Link's app, and then can be controlled by Home Assistant and Bitfocus Companion. These are simple plugs that we plug each device into. We have one on our amp rack, one on our stage box, and one on our mixer. This allows us to turn them on and off from the TP-Link app and through Bitfocus Companion.
 
 ## The Software
 
@@ -26,7 +26,7 @@ To accomplish this, we are using some TP-Link Smart Plugs. These are connected t
 
 Companion can connect to Elgato Streamdeck devices and have physical buttons to control these production systems, but I recently learned that it can be controlled by HTTP requests and in turn, Apple Shortcuts from my phone.
 
-The other piece that we are using is [Home Assistant](https://www.home-assistant.io/) which is meant to be a home automation platform but I like running it at church because it connects to all of our Internet of Things (IoT) devices like these smart plugs, our network equipment, or thermostats. Once is has connections to these devices, you can build dashboards with all the different devices in one program. Currently we are just using it for a few small dashboards to see everything at once, but I'm also triggering devices through Companion with it because their integration works so well.
+The other piece that we are using is [Home Assistant](https://www.home-assistant.io/) which is meant to be a home automation platform but I like running it at church because it connects to all of our Internet of Things (IoT) devices like these smart plugs, our network equipment, or thermostats. Once it has connections to these devices, you can build dashboards with all the different devices in one program. Currently we are just using it for a few small dashboards to see everything at once, but I'm also triggering devices through Companion with it because their integration works so well.
 
 We are able to add plugins into Companion to connect to our Home Assistant server and also our Midas M32 sound mixer.
 
@@ -34,27 +34,27 @@ We are able to add plugins into Companion to connect to our Home Assistant serve
 
 ## Startup Automation
 
-Inside of Companion, we have a page for our stage control buttons that we are installing. I also have 2 buttons that are not shown on that device that I am using for this automation controls.
+Inside of Companion, we have a page for our stage control buttons that we are installing. I also have 2 buttons that are not shown on that device that I am using for these automation controls.
 
 ![Companion Buttons Page](CompanionButtons.png)
 
-There is a button for turning the system on and turning the system off. For the startup procedure we begin by setting the switch state in Home Assistant for our 3 devices which will start powering everything up. We then wait 15 seconds for the board to boot up.
+There is a button for turning the system on and turning the system off. For the startup procedure we begin by setting the switch state in Home Assistant for our 3 devices which will start powering everything up. We then wait 15 seconds for the sound mixer to boot up.
 
 ![Startup automation](CompanionStartup1.png)
 
-After the 15 seconds, we start checking that Companion has a connection to our sound board. Once this is connected we can begin setting everything up for practice.
+After checking that Companion has a connection to the mixer, we can begin setting everything up for practice.
 
 ![Startup automation continued](CompanionStartup2.png)
 
-Once Companion is able to talk to the sound board, we wait another 3 seconds and then we load snippet number 15. This snippet on our mixer has our band and vocals mics at a normal level for practice, so no matter what level they may have been for the last service, they will be reset to a known good mix for practice.
+After this, we wait another 3 seconds and then we load snippet number 15. This snippet on our mixer has our band and vocal mics at a normal level for practice, so no matter what level they may have been for the last service, they will be reset to a known good mix for practice.
 
 ![Startup automation continued](CompanionStartup3.png)
 
-Once that snippet is loaded, we wait another 15 seconds as it takes a bit for each channel to update. Once that timer is up, we unmute our 3 mute groups (band, vocals, worship leader) to unmute all of their channels for practice.
+Once that snippet is loaded, we wait another 15 seconds since it takes a bit for each channel to update. Once that timer is up, we unmute our 3 mute groups (band, vocals, worship leader) to unmute all of their channels for practice.
 
 ![Startup automation continued](CompanionStartup4.png)
 
-Once everything is unmuted, we wait another 3 seconds for that to finish and then set the main volume fader to -7 db for practice.
+Once everything is unmuted, we wait another 3 seconds for that to finish and then set the main volume fader to -7 dB for practice.
 
 After all of these steps, it takes about 40 seconds and the band is ready to practice with everything turned on. 
 
@@ -70,9 +70,9 @@ Using the Apple Shortcuts app, we are able to run commands to tell Companion to 
 
 ![Apple shortcut configuration](AppleShortcut.JPEG)
 
-To begin the shortcut, we ask a quick menu, this is to let our band start or stop the practice. This is also to prevent accidental changes.
+To begin the shortcut we present a quick menu to let the person start or stop practice and this is also to prevent accidental changes.
 
-Depending on which button is clicked, the shortcut does a POST request to our Companion server IP with the URL for pressing the button. Using Companion's HTTP requests we can give it a specific button on a specific page. For example our start button is page 11, column 0, row 5 and we tell it to press that button. 
+Depending on which button is clicked, the shortcut does a POST request to our Companion server IP with the URL for pressing the button. Using Companion's HTTP requests we can give it a specific button on a specific page. For example, our start button is page 11, row 0, column 5 and we tell it to press that button. 
 
 So the shortcut just pushes a button and Companion does all of the work. When we run the shortcut, we get a simple menu popped up and can start or stop practice.
 
@@ -80,4 +80,4 @@ So the shortcut just pushes a button and Companion does all of the work. When we
 
 ## Conclusion
 
-This was a simple addition to the automation we already rely on, but has helped our worship leader be able to control the equipment from his phone and start or end practice whenever needed.
+This was a simple addition to the automation we already rely on, but it has made a real difference for our worship leader. What I like most about this setup is that no extra hardware was needed. Companion, Home Assistant, and the smart plugs were already in place. Apple Shortcuts just gave us a clean way to trigger it all from a phone. One tap and everything is ready to go, or shut down, without anyone needing to touch a computer or know how any of it works under the hood.
