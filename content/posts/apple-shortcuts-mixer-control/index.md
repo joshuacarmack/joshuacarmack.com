@@ -70,9 +70,9 @@ Using the Apple Shortcuts app, we are able to run commands to tell Companion to 
 
 ![Apple shortcut configuration](AppleShortcut.JPEG)
 
-To begin the shortcut we present a quick menu to let the person start or stop practice and this is also to prevent accidental changes.
+To begin the shortcut, we present a quick menu to let the person start or stop practice. This also helps to prevent accidental changes.
 
-Depending on which button is clicked, the shortcut does a POST request to our Companion server IP with the URL for pressing the button. Using Companion's HTTP requests we can give it a specific button on a specific page. For example, our start button is page 11, row 0, column 5 and we tell it to press that button. 
+Depending on which button is clicked, the shortcut does a POST request to our Companion server IP with the URL for pressing the button. Using Companion's HTTP requests we can give it a specific button on a specific page. For example, our start button is page 11, row 0, column 5 and Companion handles the rest. 
 
 So the shortcut just pushes a button and Companion does all of the work. When we run the shortcut, we get a simple menu popped up and can start or stop practice.
 
