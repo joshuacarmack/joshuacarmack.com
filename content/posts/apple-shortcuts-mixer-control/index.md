@@ -1,6 +1,6 @@
 ---
 title: Using Apple Shortcuts To Automate Our Sanctuary
-date: 2025-10-04
+date: 2026-03-27
 draft: true
 summary: Seeting up Apple Shortcuts to trigger Bitfocus Companion to turn on and off sound equipment. 
 tags:
@@ -32,4 +32,52 @@ We are able to add plugins into Companion to connect to our Home Assistant serve
 
 ![Companion Plugins](CompanionPlugins.png)
 
-## Apple Shortcuts
+## Startup Automation
+
+Inside of Companion, we have a page for our stage control buttons that we are installing. I also have 2 buttons that are not shown on that device that I am using for this automation controls.
+
+![Companion Buttons Page](CompanionButtons.png)
+
+There is a button for turning the system on and turning the system off. For the startup procedure we begin by setting the switch state in Home Assistant for our 3 devices which will start powering everything up. We then wait 15 seconds for the board to boot up.
+
+![Startup automation](CompanionStartup1.png)
+
+After the 15 seconds, we start checking that Companion has a connection to our sound board. Once this is connected we can begin setting everything up for practice.
+
+![Startup automation continued](CompanionStartup2.png)
+
+Once Companion is able to talk to the sound board, we wait another 3 seconds and then we load snippet number 15. This snippet on our mixer has our band and vocals mics at a normal level for practice, so no matter what level they may have been for the last service, they will be reset to a known good mix for practice.
+
+![Startup automation continued](CompanionStartup3.png)
+
+Once that snippet is loaded, we wait another 15 seconds as it takes a bit for each channel to update. Once that timer is up, we unmute our 3 mute groups (band, vocals, worship leader) to unmute all of their channels for practice.
+
+![Startup automation continued](CompanionStartup4.png)
+
+Once everything is unmuted, we wait another 3 seconds for that to finish and then set the main volume fader to -7 db for practice.
+
+After all of these steps, it takes about 40 seconds and the band is ready to practice with everything turned on. 
+
+## Shutdown Automation
+
+Similarly, we have a button for shutting everything down. This button turns off the amps, waits 5 seconds, and then turns off the mixer and stage rack. We turn off the amps first to prevent a pop sound when the mixer and rack turn off.
+
+![Shutdown Sequence](CompanionShutdownSequence.png)
+
+## Setting up the Apple Shortcut
+
+Using the Apple Shortcuts app, we are able to run commands to tell Companion to simulate button presses to control our power sequence.
+
+![Apple shortcut configuration](AppleShortcut.JPEG)
+
+To begin the shortcut, we ask a quick menu, this is to let our band start or stop the practice. This is also to prevent accidental changes.
+
+Depending on which button is clicked, the shortcut does a POST request to our Companion server IP with the URL for pressing the button. Using Companion's HTTP requests we can give it a specific button on a specific page. For example our start button is page 11, column 0, row 5 and we tell it to press that button. 
+
+So the shortcut just pushes a button and Companion does all of the work. When we run the shortcut, we get a simple menu popped up and can start or stop practice.
+
+![Apple Shortcut running](AppleShortcutRunning.JPEG)
+
+## Conclusion
+
+This was a simple addition to the automation we already rely on, but has helped our worship leader be able to control the equipment from his phone and start or end practice whenever needed.
