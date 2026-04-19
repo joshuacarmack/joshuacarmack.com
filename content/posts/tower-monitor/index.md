@@ -11,3 +11,8 @@ tags: ["monitoring","network","server","graphs","alerts","Grafana","Raspberry Pi
 - [Raspberry Pi 4B](https://www.amazon.com/dp/B07TD42S27)
 - [SixFab 4G Hat](https://www.amazon.com/dp/B089X8N2TY)
 - [BME280 Sensor](https://www.amazon.com/dp/B0GRRDXGH8)
+
+Github Code
+[https://github.com/joshuacarmack/karc-tower-monitor](https://github.com/joshuacarmack/karc-tower-monitor)
+
+{{< github repo="joshuacarmack/karc-tower-monitor" showThumbnail=true >}}
