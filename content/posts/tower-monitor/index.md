@@ -69,3 +69,15 @@ Once I know the data works, we can begin creating some automations. The first I 
 
 We also do this in reverse, if the status changes from Unavailable to Online, we send an alert that it is back online.
 
+Once this is setup, once the Pi is not sending data I get an instant alert straight to my phone.
+
+![Alert screenshot](alert-screenshot.jpeg)
+
+### InfluxDB
+
+
+
+### Grafana
+
+
+### Club Website
