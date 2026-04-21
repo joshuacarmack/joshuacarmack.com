@@ -1,16 +1,16 @@
 ---
 title: "Monitoring our radio tower over 4G"
 date: 2026-04-19
-draft: true
+draft: false
 summary: "Setting up a Raspberry Pi with a 4G IoT SIM card to monitor our radio tower."
 tags: ["monitoring","network","server","graphs","alerts","Grafana","Raspberry Pi","4G"]
 ---
 
-Earlier this year we have had some power issues at the [Kingsport Amateur Radio Club](https://w4trc.org/) tower located on Bays Mountain. We would notice at random times, our repeaters would be offline. The tower is a 30 minute drive up a service road from Bays Mountain park, so by the time we were free and could run up there, they would be online again. 
+Earlier this year we had some power issues at the [Kingsport Amateur Radio Club](https://w4trc.org/) tower located on Bays Mountain. We would notice at random times, our repeaters would be offline. The tower is a 30 minute drive up a service road from Bays Mountain park, so by the time we were free and could run up there, they would be online again. 
 
 To figure out why this was happening and get better alerting on when it does happen, I decided to build a Raspberry Pi shack monitor that has 4G connectivity and can let us know when the shack power is down.
 
-My  main requirement for this project was that it be self-contained and standalone from any infrastructure other than power. This meant it needed to be on a 4G data connection for sending its checks and telemetry. For this reason I chose a Raspberry Pi with a SixFab IoT 4G card.
+My main requirement for this project was that it be self-contained and standalone from any infrastructure other than power. This meant it needed to be on a 4G data connection for sending its checks and telemetry. For this reason I chose a Raspberry Pi with a SixFab IoT 4G card.
 
 ## Parts List
 
@@ -41,7 +41,7 @@ For the software side of the project, I wanted it to work a certain way. I have 
 
 One of the first things I needed to get working was the 4G connectivity. SixFab provides Internet of Things (IoT) data plans for this exact purpose. They have pay as you go plans or you can buy blocks of data. Since this project is very simple, I decided to just use a pay as you go plan and cap it at 100 MB per month so it would not go over that. 
 
-SixFab makes this whole system very simple to set up. You simply register for an account on their platform, add the SIM card info, choose your provider (I chose T-Mobile), and activated the plan. Buying their 4G hat also gives you a free $25 credit which should last me several months.
+SixFab makes this whole system very simple to set up. You simply register for an account on their platform, add the SIM card info, choose your provider (I chose T-Mobile), and activate the plan. Buying their 4G hat also gives you a free $25 credit which should last me several months.
 
 ### Python Script
 
@@ -75,7 +75,7 @@ Once I know the data works, we can begin creating some automations. The first I 
 
 We also do this in reverse, if the status changes from Unavailable to Online, we send an alert that it is back online.
 
-Once this is setup, once the Pi is not sending data I get an instant alert straight to my phone.
+Once this is set up, and the Pi is not sending data I get an instant alert straight to my phone.
 
 ![Alert screenshot](alert-screenshot.jpeg)
 
@@ -107,7 +107,7 @@ I started out making this for a public view of the data to share with the club, 
 
 Beyond my own monitoring, I decided to try and embed this data into the club's website which is developed in Astro. Astro can load JavaScript and I found that there is a way to add an MQTT client into JavaScript. With Claude Code's help, we created an Astro Component and added it to the website. This data can be found at https://w4trc.org/repeaters/dashboard/
 
-The MQTT broker will hold onto the last message received, but we do some simple checks to see if the data is older than 30 minutes or not. If the data is less than 30 minutes old, it will be shown on the site and any new hearbeat message will be automatically shown. If it is old data, the site will show a message about the monitoring system being offline. Hopefully if you go to it, the system is online and you will see the data.
+The MQTT broker will hold onto the last message received, but we do some simple checks to see if the data is older than 30 minutes or not. If the data is less than 30 minutes old, it will be shown on the site and any new heartbeat message will be automatically shown. If it is old data, the site will show a message about the monitoring system being offline. Hopefully if you go to it, the system is online and you will see the data.
 
 ## Conclusion
 
