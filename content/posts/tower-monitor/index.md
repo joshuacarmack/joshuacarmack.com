@@ -75,9 +75,34 @@ Once this is setup, once the Pi is not sending data I get an instant alert strai
 
 ### InfluxDB
 
+To store this data, I wanted to send it to InfluxDB which is a time series database. It basically can store any data over time and let other programs search and see the data changes over time. There are several ways of getting this data into InfluxDB, but I decided to have Home Assistant do it. Mainly because I already send some data from HA to InfluxDB for long term storage. To add these sensors, we just add a line in the config to send them to the InfluxDB bucket.
 
+![InfluxDB Home Assistant Config](ha-influxconfig.png)
+
+One of the nice things about InfluxDB, is that it can purge data on a time schedule. So I am only keeping this data for 90 days. I may end up extending this to a year so we can see temperatures in the shack over a year, but 90 days is a good start.
+
+Once this config is added, we are now storing this data for viewing.
 
 ### Grafana
 
+Once the data is in InfluxDB, it can be added as a Data Source in Grafana, which is a popular graphing and visualization platform. It can take in a lot of data from many different sources, and show a dashboard of it.
+
+Since Claude Code knew all of the data that was being passed around this project, it was simple to create queries to view the data we are collecting and storing. 
+
+![Grafana query](grafana-query.png)
+
+A query is just looking up data from the bucket of data in InfluxDB. We can make several of these graphs and then create a dashboard of all of it.
+
+![Grafana Dashboard](grafana-dashboard.png)
+
+I started out making this for a public view of the data to share with the club, but decided to try a new way and ended up not publishing the Grafana page publicly, but you can view it [here](http://grafana.jclab.xyz/public-dashboards/f29f1312a55e4201be5ace5f0d25c1a3).
 
 ### Club Website
+
+I decided to try and embed this data into the club's website which is devloped in Astro. Astro can load JavaScript and I found that there is a way to add an MQTT client into JavaScript. With Claude Code's help, we created an Astro Component and added it to the website. This data can be found at https://w4trc.org/repeaters/dashboard/
+
+The MQTT broker will hold onto the last message received, but we do some simple checks to see if the data is older than 30 minutes or not. If the data is less than 30 minutes old, it will be shown on the site and any new hearbeat message will be automatically shown. If it is old data, the site will show a message about the monitoring system being offline. Hopefully if you go to it, the system is online and you will see the data.
+
+## Conclusion
+
+Overall, this was a simple project and now allows us to track some data about our repeater shack on top of Bays Mountain. With this data, we can make more informed decisions about the status of everything and this opens the door for us to expand the monitoring capabilities. There are a few things we want to add on, such as a proper outdoor weather station, battery and solar charging system monitoring, and more. Stay tuned for that coming soon.
