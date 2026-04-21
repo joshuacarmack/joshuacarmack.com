@@ -65,7 +65,7 @@ Once we have the telemetry in MQTT we can begin using it for our different piece
 
 ### Home Assistant
 
-The main piece that I wanted this data for, was Home Assistant. Home Assistant (HA) is a home automation platform that I use for some smart home devices, but one of the neat things it can do is ingest this MQTT data, show it on dashboards, and give alerts off of it. With the help of the Claude Home Assistant MCP, I was able to have it generate a quick dashboard showing all of the statistics that the tower Pi was sending.
+The main piece that I wanted this data for, was Home Assistant. Home Assistant (HA) is a home automation platform that I use for some smart home devices, but one of the neat things it can do is ingest this MQTT data, show it on dashboards, and give alerts off of it. With the help of the Claude Home Assistant MCP (an integration that lets Claude interact directly with Home Assistant), I was able to have it generate a quick dashboard showing all of the statistics that the tower Pi was sending.
 
 ![Home Assistant dashboard with data](ha-dashboard.png)
 
@@ -77,7 +77,7 @@ Once I know the data works, we can begin creating some automations. The first I 
 
 We also do this in reverse, if the status changes from Unavailable to Online, we send an alert that it is back online.
 
-Once this is set up, and the Pi is not sending data I get an instant alert straight to my phone.
+Once this is set up, I get an instant alert to my phone whenever the Pi goes offline.
 
 ![Alert screenshot](alert-screenshot.jpeg)
 
@@ -112,5 +112,7 @@ Beyond my own monitoring, I decided to try and embed this data into the club's w
 The MQTT broker will hold onto the last message received, but we do some simple checks to see if the data is older than 30 minutes or not. If the data is less than 30 minutes old, it will be shown on the site and any new heartbeat message will be automatically shown. If it is old data, the site will show a message about the monitoring system being offline. Hopefully if you go to it, the system is online and you will see the data.
 
 ## Conclusion
+
+We got this Pi installed in our shack, as it turns out the power outages were happening due to some construction on the side of the mountain. We also learned that our battery backup system was dead and needs to be replaced, so we are making plans to do that. But in the meantime this will let us know how often it does swap to the battery backup.
 
 Overall, this was a simple project and now allows us to track some data about our repeater shack on top of Bays Mountain. With this data, we can make more informed decisions about the status of everything and this opens the door for us to expand the monitoring capabilities. There are a few things we want to add on, such as a proper outdoor weather station, battery and solar charging system monitoring, and more. Stay tuned for that coming soon.
