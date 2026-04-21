@@ -43,6 +43,8 @@ One of the first things I needed to get working was the 4G connectivity. SixFab 
 
 SixFab makes this whole system very simple to set up. You simply register for an account on their platform, add the SIM card info, choose your provider (I chose T-Mobile), and activate the plan. Buying their 4G hat also gives you a free $25 credit which should last me several months.
 
+I also added Tailscale so I could SSH into this Pi while it was at the shack. This has already come in handy for making small modifications to the script.
+
 ### Python Script
 
 For the software, I did enlist the assistance of Claude Code. It is a very simple Python script and the GitHub repo is below.
