@@ -6,11 +6,11 @@ summary: "Setting up a Raspberry Pi with a 4G IoT SIM card to monitor our radio 
 tags: ["monitoring","network","server","graphs","alerts","Grafana","Raspberry Pi","4G"]
 ---
 
-This past week we have had some power issues at the [Kingsport Amateur Radio Club](https://w4trc.org/) tower located on Bays Mountain. We would notice at random times, our repeaters would be offline. The tower is a 30 minute drive up a service road from Bays Mountain park, so by the time we were free and could run up there, they would be online again. 
+Earlier this year we have had some power issues at the [Kingsport Amateur Radio Club](https://w4trc.org/) tower located on Bays Mountain. We would notice at random times, our repeaters would be offline. The tower is a 30 minute drive up a service road from Bays Mountain park, so by the time we were free and could run up there, they would be online again. 
 
 To figure out why this was happening and get better alerting on when it does happen, I decided to build a Raspberry Pi shack monitor that has 4G connectivity and can let us know when the shack power is down.
 
-I had a few requirements for this project, one of those being it needed to be self-contained and standalone from any infrastructure other than power. This meant it needed to be on a 4G data connection for sending its checks and telemetry. For this reason I chose a Raspberry Pi with a SixFab IoT 4G card.
+My  main requirement for this project was that it be self-contained and standalone from any infrastructure other than power. This meant it needed to be on a 4G data connection for sending its checks and telemetry. For this reason I chose a Raspberry Pi with a SixFab IoT 4G card.
 
 ## Parts List
 
@@ -37,9 +37,15 @@ Once everything was connected, it was time for the software.
 
 For the software side of the project, I wanted it to work a certain way. I have been learning MQTT messaging recently and knew it was a very lightweight and data efficient way of sending a bit of data across the internet. So for this project I could send an MQTT message from the Pi to my home MQTT broker running EMQX. From there this data could flow into [InfluxDB](https://www.influxdata.com/) for long term storage, into [Home Assistant](https://www.home-assistant.io/) for alerting, and into [Grafana](https://grafana.com/) for graphing. These parts of the setup I already have in place, so it made sense to go this route.
 
+### 4G Connectivity
+
+One of the first things I needed to get working was the 4G connectivity. SixFab provides Internet of Things (IoT) data plans for this exact purpose. They have pay as you go plans or you can buy blocks of data. Since this project is very simple, I decided to just use a pay as you go plan and cap it at 100 MB per month so it would not go over that. 
+
+SixFab makes this whole system very simple to set up. You simply register for an account on their platform, add the SIM card info, choose your provider (I chose T-Mobile), and activated the plan. Buying their 4G hat also gives you a free $25 credit which should last me several months.
+
 ### Python Script
 
-For the software, I did enlist the assistance of Claude Code. So fair warning most of the code was AI written. It is a very simple Python script and the GitHub repo is below.
+For the software, I did enlist the assistance of Claude Code. It is a very simple Python script and the GitHub repo is below.
 
 {{< github repo="joshuacarmack/karc-tower-monitor" showThumbnail=true >}}
 
@@ -51,13 +57,13 @@ The data gets received by the MQTT broker running on my server at home. Think of
 
 An example of this data is below. This data is shown in a program called MQTT Explorer, which is a great tool for seeing realtime data and verifying that it is working properly.
 
-![MQTT Data sceenshot](mqttdata.png)
+![MQTT Data screenshot](mqttdata.png)
 
 Once we have the telemetry in MQTT we can begin using it for our different pieces.
 
 ### Home Assistant
 
-The main piece that I wanted this data for, was Home Assistant. Home Assistant (HA) is a home automation platform that I use for some smart home devices, but one of the neat things it can do is injest this MQTT data, show it on dashboards, and give alerts off of it. With the help of the Claude Home Assistant MCP, I was able to have it generate a quick dashboard showing all of the statistics that the tower Pi was sending.
+The main piece that I wanted this data for, was Home Assistant. Home Assistant (HA) is a home automation platform that I use for some smart home devices, but one of the neat things it can do is ingest this MQTT data, show it on dashboards, and give alerts off of it. With the help of the Claude Home Assistant MCP, I was able to have it generate a quick dashboard showing all of the statistics that the tower Pi was sending.
 
 ![Home Assistant dashboard with data](ha-dashboard.png)
 
@@ -99,7 +105,7 @@ I started out making this for a public view of the data to share with the club, 
 
 ### Club Website
 
-I decided to try and embed this data into the club's website which is devloped in Astro. Astro can load JavaScript and I found that there is a way to add an MQTT client into JavaScript. With Claude Code's help, we created an Astro Component and added it to the website. This data can be found at https://w4trc.org/repeaters/dashboard/
+Beyond my own monitoring, I decided to try and embed this data into the club's website which is developed in Astro. Astro can load JavaScript and I found that there is a way to add an MQTT client into JavaScript. With Claude Code's help, we created an Astro Component and added it to the website. This data can be found at https://w4trc.org/repeaters/dashboard/
 
 The MQTT broker will hold onto the last message received, but we do some simple checks to see if the data is older than 30 minutes or not. If the data is less than 30 minutes old, it will be shown on the site and any new hearbeat message will be automatically shown. If it is old data, the site will show a message about the monitoring system being offline. Hopefully if you go to it, the system is online and you will see the data.
 
