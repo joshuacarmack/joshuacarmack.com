@@ -26,6 +26,11 @@
   weight = 25
 
 [[main]]
+  name = "Web Dev"
+  pageRef = "web-consulting"
+  weight = 27
+
+[[main]]
   name = "Gallery"
   url = "https://gallery.joshuacarmack.com"
   weight = 30
