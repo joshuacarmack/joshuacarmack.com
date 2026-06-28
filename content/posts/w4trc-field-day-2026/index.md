@@ -34,7 +34,7 @@ Because I placed the Starlink away from the shelter where it would have a clear 
 
 You can place the Starlink in bypass mode, which disables its own built-in router and lets your external router handle DHCP/DNS and routing. From there I was able to broadcast a wireless network.
 
-This equipment lives in a small waterproof box that we sit to the side.
+This equipment lives in a small waterproof box that we set to the side.
 
 ![View of the network box with firewall and mini PC](network-box.jpeg)
 
@@ -70,10 +70,10 @@ This agent is open source and available at https://github.com/w4trc/contest.w4tr
 
 That same Cloudflare worker had a public dashboard at https://log.w4trc.org which anyone could visit during Field Day and see live stats. The worker would query the D1 database and show some statistics such as current contact (QSO) count, what bands the contacts were made on, who made the contacts, and what sections we had contacted. 
 
-Another reason this architecture was decided on was this allowed use of the Starlink connection to be used to send basic info to Cloudflare and the data and viewing is all in Cloudflare's world and not having to tunnel back to the site over the Starlink connection.
-
 ![Dashboard showing stats](dashboard1.png)
 ![Dashboard showing stats](dashboard2.png)
+
+This architecture also meant that the Starlink connection only needed to push small amounts of data to Cloudflare, rather than tunneling all dashboard traffic back to the site.
 
 ### The Desktop App
 
