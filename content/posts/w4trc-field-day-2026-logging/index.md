@@ -1,5 +1,5 @@
 ---
-title: "W4TRC Field Day 2026"
+title: "W4TRC Field Day 2026 Logging Setup"
 date: 2026-06-26
 draft: false
 summary: "Setting up logging system for Kingsport Amateur Radio Club's Field Day event, and making it complicated."
