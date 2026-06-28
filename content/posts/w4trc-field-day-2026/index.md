@@ -100,6 +100,8 @@ The last page I added was the sections list.
 
 As part of the Field Day radio exchange, we trade our section. For us, our section is TN for Tennessee. Larger states like Texas may be broken up into North Texas (NTX) or South Texas (STX) and sometimes we can't remember all of the sections like SCV which is Santa Clara Valley in California. This page lists all of those and shows them in green if we have contacted that section.
 
+![Desktop showing N1MM and the W4TRC app](desktop.png)
+
 ### Reporting
 
 
