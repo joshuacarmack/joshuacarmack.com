@@ -60,3 +60,19 @@ N1MM just feels more robust to me, as any computer can drop offline, even our "m
 
 Because N1MM broadcasts any contacts that are made over the network, this gave me the idea of being able to capture these contacts and make a public dashboard on our website.
 
+### The Sending Agent
+
+
+
+### The Website Dashboard
+
+
+
+### The Desktop App
+
+
+### Reporting
+
+
+## Review
+
