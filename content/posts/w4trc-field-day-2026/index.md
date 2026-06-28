@@ -1,7 +1,7 @@
 ---
 title: "W4TRC Field Day 2026"
 date: 2026-06-26
-draft: true
+draft: false
 summary: "Setting up logging system for Kingsport Amateur Radio Club's Field Day event, and making it complicated."
 tags: ["networking","radio","amateur radio","w4trc","cloudflare","web app"]
 ---
@@ -64,7 +64,7 @@ Because N1MM broadcasts any contacts that are made over the network, this gave m
 
 Since N1MM does UDP broadcasting of any contacts, I built a small NodeJS application (with Claude AI's help) that listened for these UDP messages and forwarded them to our website. This submitted each contact to a Cloudflare Worker that would parse the contact and store it in a D1 SQL database on Cloudflare. This served as a place to view the logs publicly, but also served as a tertiary backup of all of our contacts that were stored off site in case there were any issues with our logging PCs.
 
-This agent is open source and available at https://github.com/w4trc/contest.w4trc.org. 
+This agent is open source and available at https://github.com/w4trc/w4trc-n1mm-dashboard.
 
 ### The Website Dashboard
 
