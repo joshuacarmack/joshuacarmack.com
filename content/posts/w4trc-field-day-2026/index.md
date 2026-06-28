@@ -44,7 +44,7 @@ I set up 4 PCs that we use for logging. These are just some basic Lenovo and HP 
 
 ### The "Mini Server"
 
-I run a Larkbox Mini PC as our "Mini Server". This is a small Windows PC that hides in the network equipment box and runs as the primary logger and agent for the custom software I will cover later in this post.
+I run a Mini PC as our "Mini Server". This is a small Windows PC that hides in the network equipment box that is near our logging area. This was the file share host for N3FJP and this year functioned as the primary log in N1MM and hosted the sending agent to send our logs to our website, which I will cover later in this post. This PC also was my remote host that let me connect to the network while away from the field day location.
 
 ![Mini Server](mini-server.png)
 
