@@ -62,14 +62,43 @@ Because N1MM broadcasts any contacts that are made over the network, this gave m
 
 ### The Sending Agent
 
+Since N1MM does UDP broadcasting of any contacts, I built (with Claude's AI assistance) a small NodeJS application that listened for these UDP messages and forwarded them to our website. This actually did a submission for each contact to a Cloudflare Worker that would parse the contact and store it in a D1 SQL database on Cloudflare. This served as a place to view the logs publicly, but also served as a tertiary backup of all of our contacts that were stored off site in case there were any issues with our logging PCs.
 
+This agent is open source and available at https://github.com/w4trc/contest.w4trc.org. 
 
 ### The Website Dashboard
 
+That same Cloudflare worker had a public dashboard at https://log.w4trc.org which anyone could visit during Field Day and see live stats. The worker would query the D1 database and show some statistics such as current contact (QSO) count, what bands the contacts were made on, who made the contacts, and what sections we had contacted. 
 
+Another reason this architecture was decided on was this allowed use of the Starlink connection to be used to send basic info to Cloudflare and the data and viewing is all in Cloudflare's world and not having to tunnel back to the site over the Starlink connection.
+
+TODO: Add images
 
 ### The Desktop App
 
+Another part I added to this system was a simple desktop Electron app to view this data and more reference data on the logging computers. 
+
+The main page I wanted was the stats page.
+
+![Desktop app stats page](desktopapp-stats.png)
+
+My main issue with N1MM was it did not show a lot of stastics while operating. It was hard to find total number of contacts so I wanted a quick view of how many contacts we were making and how many points (different modes are worth different points in Field Day). 
+
+I also added a few other pages such as a band plan for reference.
+
+![Desktop app band plan](desktopapp-bands.png)
+
+This was to show operators what frequency ranges were available for what amateur bands.
+
+Another page I added was a conditions page. Amateur radio waves are heavily affected by the sun and solar conditions can change at any time. So I wanted a quick page that pulls in the current solar conditions from https://www.hamqsl.com/solarxml.php and shows them easily.
+
+![Desktop app conditions](desktopapp-conds.png)
+
+The last page I added was the sections list.
+
+![Desktop app sections page](desktopapp-sections.png)
+
+As part of the Field Day radio exchange, we trade our section. For us, our section is TN for Tennessee. Larger states like Texas may be broken up into North Texas (NTX) or South Texas (STX) and sometimes we can't remember all of the sections like SCV which is Santa Clara Valley in California. This page lists all of those and shows them in green if we have contacted that section.
 
 ### Reporting
 
