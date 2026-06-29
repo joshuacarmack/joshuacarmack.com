@@ -20,7 +20,7 @@ For this year, I took this a step further. This year we had a working internet c
 
 ### The Internet Connection - Starlink
 
-This year, we got a Starlink dish to provide internet access at our field day location. We set up at Netherland Inn and would not have any public internet access. Internet is not necessary for this event, but it is just another communication method we could deploy in emergencies so I wanted to test that out. 
+This year, we got a Starlink satellite dish to provide internet access at our field day location. We set up at Netherland Inn and would not have any public internet access. Internet is not necessary for this event, but it is just another communication method we could deploy in emergencies so I wanted to test that out. 
 
 Our setup was really simple, I used a Starlink Mini on a Roam plan which provided up to 100 Mbps download and 20 Mbps upload speed which was plenty for our small network. I set this up on a small tripod and ran a power and ethernet line to it. 
 
