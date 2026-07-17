@@ -54,8 +54,9 @@ Everything network-wise is UniFi, which keeps management simple.
 | 1 | default | Internal LAN |
 | 9 | public-servers | Public-facing services |
 | 99 | sandbox | Testing / experiments |
+| 123 | guest | Guest network |
 
-Most infrastructure lives on the default VLAN. Public services are placed on VLAN 9. Anything risky or experimental goes into VLAN 99.
+Most infrastructure lives on the default VLAN. Public services are placed on VLAN 9. Anything risky or experimental goes into VLAN 99. Guests get their own isolated network on VLAN 123.
 
 ### Security Approach
 
