@@ -72,12 +72,12 @@ All local compute runs in a single Proxmox cluster named `Home`.
 
 ### Cluster Nodes
 
-| Node | CPU | RAM | Notes |
-|-----|----|----|----|------|
-| jc-pve01 | Dual Xeon E5620 | ~82 GB | Older but reliable |
-| jc-pve02 | i5-4570T | 4 GB | Lightweight node |
-| jc-pve03 | i5-4570T | ~8 GB | Lightweight node |
-| jc-pve04 | Xeon Silver 4110 | ~96 GB | Primary heavy host |
+| Node | CPU | RAM | Storage | Notes |
+|-----|----|----|----|----|
+| jc-pve01 | Dual Xeon E5620 | ~82 GB | 4 TB usable | Older but reliable |
+| jc-pve02 | i5-4570T | 4 GB | 500 GB | Lightweight node |
+| jc-pve03 | i5-4570T | ~8 GB | 500 GB | Lightweight node |
+| jc-pve04 | Xeon Silver 4110 | ~96 GB | 8 TB usable | Primary heavy host |
 
 Not all nodes are equal, and that’s okay. Heavier workloads tend to land on jc-pve04.
 
@@ -85,7 +85,7 @@ Not all nodes are equal, and that’s okay. Heavier workloads tend to land on jc
 
 - Local-lvm on each node  
 - Proxmox Backup Server (PBS)  
-- Synology NAS  
+- Synology NAS – ~20 TB usable, serving SMB shares for file storage, a backup target, and media storage  
 
 ---
 
@@ -177,13 +177,15 @@ This keeps important applications offsite with redundancy.
 
 Backup flow:
 
+```
 VMs / Containers
-↓
+    ↓
 Proxmox Backup Server
-↓
+    ↓
 Synology NAS
-↓
+    ↓
 Backblaze B2
+```
 
 This gives me:
 
