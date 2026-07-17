@@ -104,66 +104,60 @@ I manage containers using Dockge and Docker Compose.
 
 ### Monitoring
 
-- Grafana  
-- Prometheus  
-- Zabbix  
-- Uptime Kuma  
-- InfluxDB  
-- Rybbit  
+- **Grafana** – Dashboards and visualization for metrics collected across the homelab.
+- **Prometheus** – Metrics collection and time-series storage that feeds the Grafana dashboards.
+- **Zabbix** – Infrastructure monitoring and alerting across hosts and services.
+- **Uptime Kuma** – Lightweight uptime/status checks with notifications and public views.
+- **InfluxDB** – Time-series database, mostly used for sensor and IoT data.
+- **Rybbit** – Privacy-friendly web analytics for my sites.
 
 ### Media
 
-- Jellyfin  
-- Radarr  
-- Sonarr  
-- SABnzbd  
-- Immich  
-- BirdNET  
-- ADS-B Tracker  
-- Restreamer  
+- **Jellyfin** – Self-hosted media server for movies and TV.
+- **Radarr** – Automates movie downloads and library management.
+- **Sonarr** – Automates TV show downloads and library management.
+- **SABnzbd** – Usenet download client feeding Radarr and Sonarr.
+- **Immich** – Self-hosted photo and video backup, like a private Google Photos.
+- **BirdNET** – Identifies bird species from audio picked up around the property.
+- **ADS-B Tracker** – Tracks aircraft overhead using an SDR receiver. Public feed: [adsb.joshuacarmack.com](https://adsb.joshuacarmack.com).
+- **Restreamer** – Restreams IP camera and RTMP feeds for local viewing and recording.
 
 ### Automation
 
-- Node-RED  
-- n8n  
-- Cronicle  
+- **Node-RED** – Flow-based automation for IoT and integration tasks.
+- **n8n** – Workflow automation for connecting apps and APIs.
+- **Cronicle** – Scheduled job runner for scripts and recurring tasks.
 
 ### Infrastructure
 
-- Caddy  
-- Cloudflared  
-- EMQX (MQTT Broker)  
-- Gitea  
-- Gitea Mirror  
-- Home Assistant  
-- FreePBX  
+- **Caddy** – Reverse proxy in front of most self-hosted services, with automatic HTTPS.
+- **Cloudflared** – Cloudflare Tunnel client for exposing services without opening ports.
+- **EMQX (MQTT Broker)** – Message broker for IoT devices and automation.
+- **Gitea** – Self-hosted Git server for personal and club repos.
+- **Gitea Mirror** – Keeps Gitea repos synced with GitHub.
+- **Home Assistant** – Central hub for smart home automation: lights, sensors, and other connected devices.
+- **FreePBX** – Self-hosted VoIP/phone system.
 
 ### Utility
 
-- Paperless-NGX  
-- Hoarder  
-- HomeBox  
-- HomeBox Companion  
-- ITFlow  
-- BentoPDF  
-- CommaFeed  
-- Invoice Ninja  
-- IT-Tools  
-- Networking Toolbox  
-- Mixpost  
-- OnTime  
+- **Paperless-NGX** – Document scanning and archiving with OCR search.
+- **Hoarder** – Bookmark and link archiving tool.
+- **HomeBox** – Tracks household/homelab inventory: hardware, spare parts, and other physical assets.
+- **HomeBox Companion** – Companion app for scanning items into HomeBox.
+- **ITFlow** – MSP-style documentation and client management, used for a side project.
+- **BentoPDF** – Web-based PDF toolkit for merging, splitting, and converting files.
+- **CommaFeed** – Self-hosted RSS reader.
+- **Invoice Ninja** – Invoicing and billing for side projects.
+- **IT-Tools** – Collection of handy utilities for developers and sysadmins.
+- **Networking Toolbox** – Networking utilities like subnet calculators and DNS lookups.
+- **Mixpost** – Social media scheduling and posting.
+- **OnTime** – Event and stage timer for livestreams and presentations.
 
 ---
 
 ## Highlights
 
-A few of these deserve a callout since I rely on them the most:
-
-- **Zabbix** – Monitors uptime, resource usage, and alerting across hosts and services in the homelab.
-- **Caddy** – Reverse proxy in front of most self-hosted services, handling routing and automatic TLS certificates.
-- **HomeBox** – Tracks household/homelab inventory: hardware, spare parts, and other physical assets.
-- **Home Assistant** – Central hub for smart home automation: lights, sensors, and other connected devices.
-- **ADS-B Tracker** – Tracks aircraft overhead using an SDR receiver. Public feed available at [adsb.joshuacarmack.com](https://adsb.joshuacarmack.com).
+A few of these get a callout since I rely on them the most day-to-day: **Zabbix**, **Caddy**, **HomeBox**, and **Home Assistant** (see descriptions above). My **ADS-B Tracker** is also public if you want to see what's flying overhead: [adsb.joshuacarmack.com](https://adsb.joshuacarmack.com).
 
 ---
 
