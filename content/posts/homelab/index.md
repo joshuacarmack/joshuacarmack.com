@@ -22,7 +22,7 @@ This document is meant to be a living reference for me and a starting point for 
 
 ## High-Level Architecture
 
-At a high level, everything at home centers around a Proxmox cluster. Most workloads run either as VMs or Docker containers inside VMs. A Synology NAS handles bulk storage and is also part of the backup chain. Some public-facing services live on a small set of Linode VPS instances.
+At a high level, everything at home centers around a Proxmox cluster. Most workloads run either as VMs, Containers, or Docker containers inside VMs. A Synology NAS handles bulk storage and is also part of the backup chain. Some public-facing services live on a small set of Linode VPS instances.
 
 I try to keep a clear separation between:
 
@@ -32,7 +32,7 @@ I try to keep a clear separation between:
 - Storage
 - External VPS
 
-Most inbound access is handled through Cloudflare Tunnel instead of traditional port forwarding.
+Most inbound access is handled through Caddy as a reverse proxy or Cloudflare Tunnels.
 
 ---
 
@@ -43,7 +43,7 @@ Most inbound access is handled through Cloudflare Tunnel instead of traditional 
 - UniFi UDM-Pro (gateway / firewall)
 - UniFi Core Switch
 - UniFi Office Switch
-- UniFi Access Points
+- UniFi Access Point
 
 Everything network-wise is UniFi, which keeps management simple.
 
@@ -60,7 +60,7 @@ Most infrastructure lives on the default VLAN. Public services are placed on VLA
 ### Security Approach
 
 - UDM-Pro handles firewalling  
-- Cloudflare Tunnel used for most public access  
+- Cloudflare Tunnel or Caddy reverse proxy used for most public access  
 - Very minimal direct port forwarding  
 - Internal services are not exposed unless necessary  
 
@@ -72,12 +72,12 @@ All local compute runs in a single Proxmox cluster named `Home`.
 
 ### Cluster Nodes
 
-| Node | IP | CPU | RAM | Notes |
+| Node | CPU | RAM | Notes |
 |-----|----|----|----|------|
-| jc-pve01 | 192.168.4.21 | Dual Xeon E5620 | ~82 GB | Older but reliable |
-| jc-pve02 | 192.168.4.22 | i5-4570T | 4 GB | Lightweight node |
-| jc-pve03 | 192.168.4.23 | i5-4570T | ~8 GB | Lightweight node |
-| jc-pve04 | 192.168.4.24 | Xeon Silver 4110 | ~96 GB | Primary heavy host |
+| jc-pve01 | Dual Xeon E5620 | ~82 GB | Older but reliable |
+| jc-pve02 | i5-4570T | 4 GB | Lightweight node |
+| jc-pve03 | i5-4570T | ~8 GB | Lightweight node |
+| jc-pve04 | Xeon Silver 4110 | ~96 GB | Primary heavy host |
 
 Not all nodes are equal, and that’s okay. Heavier workloads tend to land on jc-pve04.
 
@@ -98,16 +98,6 @@ Docker runs inside VMs rather than directly on Proxmox hosts.
 
 I manage containers using Dockge and Docker Compose.
 
-Stacks are grouped by function:
-
-- monitoring  
-- media  
-- automation  
-- infrastructure  
-- utility  
-
-This keeps things organized and easier to back up or migrate.
-
 ---
 
 ## Core Services
@@ -116,9 +106,10 @@ This keeps things organized and easier to back up or migrate.
 
 - Grafana  
 - Prometheus  
-- Zabbix Proxy  
+- Zabbix  
 - Uptime Kuma  
 - InfluxDB  
+- Rybbit  
 
 ### Media
 
@@ -127,30 +118,52 @@ This keeps things organized and easier to back up or migrate.
 - Sonarr  
 - SABnzbd  
 - Immich  
-- MeTube  
+- BirdNET  
+- ADS-B Tracker  
+- Restreamer  
 
 ### Automation
 
 - Node-RED  
 - n8n  
+- Cronicle  
 
 ### Infrastructure
 
 - Caddy  
 - Cloudflared  
-- MQTT Broker  
+- EMQX (MQTT Broker)  
 - Gitea  
 - Gitea Mirror  
-- ArchiveBox  
+- Home Assistant  
+- FreePBX  
 
 ### Utility
 
 - Paperless-NGX  
 - Hoarder  
 - HomeBox  
-- Pairdrop  
-- RustDesk  
+- HomeBox Companion  
 - ITFlow  
+- BentoPDF  
+- CommaFeed  
+- Invoice Ninja  
+- IT-Tools  
+- Networking Toolbox  
+- Mixpost  
+- OnTime  
+
+---
+
+## Highlights
+
+A few of these deserve a callout since I rely on them the most:
+
+- **Zabbix** – Monitors uptime, resource usage, and alerting across hosts and services in the homelab.
+- **Caddy** – Reverse proxy in front of most self-hosted services, handling routing and automatic TLS certificates.
+- **HomeBox** – Tracks household/homelab inventory: hardware, spare parts, and other physical assets.
+- **Home Assistant** – Central hub for smart home automation: lights, sensors, and other connected devices.
+- **ADS-B Tracker** – Tracks aircraft overhead using an SDR receiver. Public feed available at [adsb.joshuacarmack.com](https://adsb.joshuacarmack.com).
 
 ---
 
@@ -159,11 +172,10 @@ This keeps things organized and easier to back up or migrate.
 I use a few small VPS instances mainly for:
 
 - Public Docker workloads  
-- RustDesk relay  
 - TacticalRMM  
-- Offsite monitoring and backups  
+- Offsite monitoring
 
-This keeps public exposure away from my home network when possible.
+This keeps important applications offsite with redundancy.
 
 ---
 
@@ -192,8 +204,6 @@ Nothing fancy, just layered.
 ## Operational Practices
 
 - Clear naming (jc-pveXX, descriptive VM names)  
-- Containers grouped by stack  
-- Avoid snowflake configs where possible  
 - If something is annoying to rebuild, it gets backed up  
 
 ---
